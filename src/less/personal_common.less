@@ -1,0 +1,149 @@
+@import "include/variables";
+ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+a{
+	text-decoration: none;
+}
+#top_navigator{
+	.top_personal_link{
+		color: @minor-color5;
+	}
+}
+
+#personal_aside{
+	width: 220px;
+	margin: 10px 30px 0 0;
+	background-color: #fff;
+	.title{
+		padding-left: 30px;
+		line-height: 42px;
+		border-top: 1px solid #eee;
+		border-bottom: 1px solid #eee;
+		.name{
+			font-size: 15px;
+		}
+		.icon{
+			vertical-align: middle;
+			margin-right: 10px;
+			display: inline-block;
+			width: 24px;
+			height: 27px;
+			&.icon1{
+				background: url('../img/personal/icon1.png') no-repeat center center;
+			}
+			&.icon2{
+				background: url('../img/personal/icon2.png') no-repeat center center;
+			}
+			&.icon3{
+				background: url('../img/personal/icon3.png') no-repeat center center;
+			}
+			&.icon4{
+				background: url('../img/personal/icon4.png') no-repeat center center;
+			}
+			&.icon5{
+				background: url('../img/personal/icon5.png') no-repeat center center;
+			}
+		}
+	}
+	.group{
+			li{
+				line-height: 42px;
+				a{
+					display: block;
+					font-size: 14px;
+					color: #666;
+					padding-left: 67px;
+					&.active{
+						color: #fff;
+						background-color: @main-color1;
+					}
+				}
+				
+			}
+		}
+}
+.section_wrapper>.content{
+	width: 950px;
+	margin-top: 10px;
+	background-color: #fff;
+	min-height: 687px;
+	position: relative;
+	.pagination{
+		margin: 0;
+		float: right;
+	}
+}
+
+.nav-tabs{
+	li{
+		a{
+			color: #000;
+			font-size: 15px;
+			padding: 10px 30px;
+			border: none;
+			&:hover, &:active, &:focus{
+				background: none;
+			}
+			
+		}
+		&.active{
+			a{
+				border: none !important;
+				background: url('../img/personal/store_active_bg.png') no-repeat center bottom;
+			}
+		}
+	}
+	
+}
+#evaluate{
+	ul{
+		li{
+			margin-bottom: 6px;
+			position: relative;
+			label{
+				font-weight: normal;
+				font-size: 15px;
+				vertical-align: top;
+			}
+			.stars{
+				display: inline-block;
+				li{
+					display: inline-block;
+					width: 24px;
+					height: 24px;
+					background: url('../img/personal/star.png') no-repeat 0 0;
+					&.checked{
+						background: url('../img/personal/star.png') no-repeat 0 -24px;
+					}
+					input{
+						outline: none;
+						opacity: 0;
+						position: absolute;
+						left: 0;
+						right: 0;
+						width: 100%;
+						height: 100%;
+					}
+				}					
+			}
+
+			textarea{
+				width: 420px;
+				height: 60px;
+				outline: none;
+				border: 1px solid #eee;
+				resize: none;
+				padding: 5px 10px;
+				font-size: 14px;
+			}
+		}
+	}
+	footer{
+		margin: 10px auto 0;
+		width: 286px;
+	}
+
+}

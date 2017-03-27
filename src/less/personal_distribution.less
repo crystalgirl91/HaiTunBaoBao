@@ -1,0 +1,63 @@
+@import "include/variables";
+
+h4{
+		font-weight: normal;
+		font-size: 15px;
+		padding: 0 0 0 20px;
+		line-height: 46px;
+		margin: 0;
+		border-bottom: 1px solid #eee;
+	}
+.distribute{
+	padding: 10px 0 10px 100px;
+	section.distribute-infor{
+	  font-size: 14px;
+	  li{
+	    line-height: 20px;
+	    label{
+	    	font-weight: normal;
+	    }
+	    .distri_status{
+	      color: @main-color1;
+	    }
+	  }
+	}
+	.distributions{
+	  font-size: 14px;
+	  margin-top: 10px;
+	  color: #999;
+	  li{
+	    padding: 0 0 15px 20px;
+	    border-left: 1px solid #999;
+	    position: relative;
+	    .time{
+	      font-size: 13px;
+	      margin-top: 5px;
+	    }
+	    &:before{
+	      content: "";
+	      display: block;
+	      width: 14px;
+	      height: 14px;
+	      border-radius: 100%;
+	      background-color: #999;
+	      position: absolute;
+	      top: 0;
+	      left: -7px;
+	    }
+	    &:first-child{
+	      .address{
+	        color: @main-color1;
+	      }
+	      &:before{
+	        left: -7px;
+	        background-color: @main-color1;
+	        border: 2px solid #92cbfc;
+	      }
+	    }
+	    &:last-child{
+	      border: none;
+	    }
+	  }
+	}
+}

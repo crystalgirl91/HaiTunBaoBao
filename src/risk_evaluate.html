@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html ng-app="risk_evaluate">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>风险评估</title>
+<script>$PageName = "risk_evaluate";</script>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/risk_evaluate.css">
+</head>
+<body class="ng-cloak">
+<div class="page_wrapper">
+	<div id="page_header" ng-include="'include/header.html'"></div>
+	<div class="section_wrapper" id="risk_evaluate">
+		<form method="post" name="evaluateForm" novalidate>
+			<section data-ng-show="route=='risk_evaluate1'">
+				<h3>请填写您的基本信息</h3>
+				<div>
+					<p>步骤一</p>
+					<ul>
+						<li>
+							<label class="label">性别：</label>
+							<label><input type="radio" name="sex" data-ng-model="risk.sex" value="a1"/> 男士</label>
+							<label><input type="radio" name="sex" data-ng-model="risk.sex" value="a2"/> 女士</label>
+						</li>
+						<li>
+							<label class="label">年龄：</label>
+							<select name="age" data-ng-model="risk.age" required>
+								<option value="">请选择</option>
+								<option value="b1">0-18岁</option>
+								<option value="b2">18-30岁</option>
+								<option value="b3">30-50岁</option>
+								<option value="b4">50岁以上</option>
+							</select>
+						</li>
+						<li>
+							<label class="label">职业：</label>
+							<select name="job" data-ng-model="risk.job" required>
+								<option value="">请选择</option>
+								<option value="c1">公务员事业单位</option>
+								<option value="c2">学生</option>
+								<option value="c3">家庭主妇</option>
+								<option value="c4">个体或自由职业者</option>
+								<option value="c5">白领或金融民工或程序员</option>
+								<option value="c6">其他</option>
+							</select>
+						</li>
+						<li>
+							<label class="label">居住地：</label>
+							<select name="address" data-ng-model="risk.address" required>
+								<option value="">请选择</option>
+								<option value="d1">一线城市（北上广深杭）</option>
+								<option value="d2">省会城市及计划单列市</option>
+								<option value="d3">二三线其他城市</option>
+								<option value="d4">城镇及农村</option>
+							</select>
+						</li>
+						<li>
+							<label class="label">固定资产：</label>
+							<select name="assets" data-ng-model="risk.assets" required>
+								<option value="">请选择</option>
+								<option value="e1">0-30万</option>
+								<option value="e2">30-50万</option>
+								<option value="e3">50万-100万</option>
+								<option value="e4">100万以上</option>
+							</select>
+						</li>
+						<li>
+							<label class="label">年家庭收入：</label>
+							<select name="incomeYear" data-ng-model="risk.incomeYear" required>
+								<option value="">请选择</option>
+								<option value="f1">0-10万</option>
+								<option value="f2">10-20万</option>
+								<option value="f3">20-30万</option>
+								<option value="f4">30-50万</option>
+								<option value="f4">50万以上</option>
+							</select>
+						</li>
+						<li>
+							<label class="label">年家庭支出：</label>
+							<select name="payYear" data-ng-model="risk.payYear" required>
+								<option value="">请选择</option>
+								<option value="g1">0-10万</option>
+								<option value="g2">10-20万</option>
+								<option value="g3">20-30万</option>
+								<option value="g4">30-50万</option>
+								<option value="g4">50万以上</option>
+							</select>
+						</li>
+					</ul>
+					<footer><a href="#risk_evaluate2" data-ng-class="{disabled: evaluateForm.age.$invalid || evaluateForm.job.$invalid || evaluateForm.address.$invalid || evaluateForm.assets.$invalid || evaluateForm.incomeYear.$invalid || evaluateForm.payYear.$invalid}">下一步</a><span class="disable"></span></footer>
+				</div>
+			</section>
+			<section id="risk_evaluate2" data-ng-show="route=='risk_evaluate2'">
+				<h3>请填写您的保障信息</h3>
+				<div>
+					<p>步骤二</p>
+					<ul>
+						<li>
+							<label class="label">社保：</label>
+							<label><input type="radio" name="social_insurance" data-ng-model="risk.social_insurance" value="h1"/> 有</label>
+							<label><input type="radio" name="social_insurance" data-ng-model="risk.social_insurance" value="h2"/> 无</label>
+						</li>
+						<li>
+							<label class="label">健康保障类：</label>
+							<select name="healthinsurance" data-ng-model="risk.healthinsurance" required>
+								<option value="">请选择</option>
+								<option value="i1.1">0-10万</option>
+								<option value="i1.2">10-30万</option>
+								<option value="i1.3">30-50万</option>
+								<option value="i1.4">50万以上</option>
+							</select>
+						</li>
+						<li>
+							<label class="label">意外保障类：</label>
+							<select name="accidentinsurance" data-ng-model="risk.accidentinsurance" required>
+								<option value="">请选择</option>
+								<option value="i2.1">0-10万</option>
+								<option value="i2.2">10-30万</option>
+								<option value="i2.3">30-50万</option>
+								<option value="i2.4">50万以上</option>
+							</select>
+						</li>
+						<li>
+							<label class="label">财产保障类：</label>
+							<select name="propertyinsurance" data-ng-model="risk.propertyinsurance" required>
+								<option value="">请选择</option>
+								<option value="j1.1">0-10万</option>
+								<option value="j1.2">10-30万</option>
+								<option value="j1.3">30-50万</option>
+								<option value="j1.4">50万以上</option>
+							</select>
+						</li>
+						<li>
+							<label class="label">责任保障类：</label>
+							<select name="dutyinsurance" data-ng-model="risk.dutyinsurance" required>
+								<option value="">请选择</option>
+								<option value="j2.1">0-10万</option>
+								<option value="j2.2">10-30万</option>
+								<option value="j2.3">30-50万</option>
+								<option value="j2.4">50万以上</option>
+							</select>
+						</li>
+					</ul>
+					<footer><a href="javascript:void(0)" data-ng-click="evaluate()" data-ng-class="{disabled: evaluateForm.healthinsurance.$invalid || evaluateForm.accidentinsurance.$invalid || evaluateForm.propertyinsurance.$invalid || evaluateForm.dutyinsurance.$invalid}">立即评估</a><span class="disable"></span></footer>
+				</div>
+			</section>
+		</form>
+	</div>
+	<div id="page_footer" ng-include="'include/footer.html'"></div>
+</div>
+<script src="js/common.js"></script>
+<script src="js/risk_evaluate.js"></script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html ng-app="personal_baobao">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>我的保宝</title>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/personal_baobao.css">
+</head>
+<body class="ng-cloak">
+<div class="page_wrapper">
+	<div id="page_header" ng-include="'include/header.html'"></div>
+	<div class="section_wrapper">
+		<div id="personal_aside" personal-aside="personal_baobao.html#/comm/all/1" class="pull_left"></div>
+		<div class="content pull_right">
+			<ul class="type">
+			    <li ng-class="{active: type === 'comm'}" class="nav-item">
+			    	<input type="radio" name="product" data-ng-model="type" value="comm" data-ng-click="changeType(type)"><a href="javascript:void(0)">我的保单</a>
+			    </li>
+			    <li ng-class="{active: type === 'mutual'}" class="nav-item">
+			    	<input type="radio" name="product" data-ng-model="type" value="mutual" data-ng-click="changeType(type)"><a href="javascript:void(0)">我的订单</a>
+			    </li>
+			</ul>
+
+			<div id="userProduct" class="baobao">
+				<div id="comm" class="content" data-ng-show="type === 'comm'">
+					<ul class="nav nav-tabs">
+					    <li ng-class="{active: pageCategory === 'comm/all'}" class="nav-item">
+					        <a href="javascript:" ng-click="jumpPage('comm/all', 1)" class="nav-link">全部</a>
+					    </li>
+					    <li ng-class="{active: pageCategory === 'comm/0'}" class="nav-item">
+					        <a href="javascript:" ng-click="jumpPage('comm/0', 1)" class="nav-link">待支付</a>
+					    </li>
+					    <li ng-class="{active: pageCategory === 'comm/1'}" class="nav-item">
+					        <a href="javascript:" ng-click="jumpPage('comm/1', 1)" class="nav-link">待出单</a>
+					    </li>
+					    <li ng-class="{active: pageCategory === 'comm/2'}" class="nav-item">
+					        <a href="javascript:" ng-click="jumpPage('comm/2', 1)" class="nav-link">已出单</a>
+					    </li>
+					    <li ng-class="{active: pageCategory === 'comm/3'}" class="nav-item">
+					        <a href="javascript:" ng-click="jumpPage('comm/3', 1)" class="nav-link">已生效</a>
+					    </li>
+					    <li ng-class="{active: pageCategory === 'comm/4'}" class="nav-item">
+					        <a href="javascript:" ng-click="jumpPage('comm/4', 1)" class="nav-link">已终止</a>
+					    </li>
+					    <li ng-class="{active: pageCategory === 'comm/8'}" class="nav-item">
+					        <a href="javascript:" ng-click="jumpPage('comm/8', 1)" class="nav-link">已取消</a>
+					    </li>
+					    <li ng-class="{active: pageCategory === 'comm/9'}" class="nav-item">
+					        <a href="javascript:" ng-click="jumpPage('comm/9', 1)" class="nav-link">出单失败</a>
+					    </li>
+					    <li ng-class="{active: pageCategory === 'comm/10'}" class="nav-item">
+					        <a href="javascript:" ng-click="jumpPage('comm/10', 1)" class="nav-link">已退款</a>
+					    </li>
+					</ul>
+					<div class="table-responsive">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<td>保单名称</td>
+									<td>被保人</td>
+									<td>当前余额(元)</td>
+									<td>单号</td>
+									<td>保障期限</td>
+									<td>操作</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-ng-repeat="item in comm">
+									<td><a data-ng-href="products_insurance.html?prodAid={{ item.prodAid }}">{{ item.prodName }}</a></td>
+									<td>{{ item.isuName }}</td>
+									<td>{{ ((item.isuAmt) / 100).toFixed(2) }}</td>
+									<td>{{ item.isuNum!==""?item.isuNum:item.ordAid }}</td>
+									<td>{{ item.isuDtStart | date:"yyyy-MM-dd" }}~{{ item.isuDtEnd | date:"yyyy-MM-dd" }}</td>
+									<td>
+										<span data-ng-hide="item.policyStatus=='8'||item.policyStatus=='9'||item.policyStatus=='10'">
+											<a data-ng-href="{{ payInsurance(item) }}"
+												data-ng-show="item.policyStatus==='0'">支付</a>
+
+											<a data-ng-href="products_insurance_order.html?prodAid={{ item.prodAid }}&ordAid={{ item.ordAid }}"
+												data-ng-show="date >= item.isuDtEnd">续保</a>
+
+											<a class="evaluate" data-ng-if="item.cmtYn!=='1' && item.policyStatus!=='0' && item.policyStatus!=='1'" href='javascript:void(0)' data-ng-click="evaluateBaobao(item)">评价</a>
+											<span class="evaluate_gray" data-ng-if="item.cmtYn==='1' && item.policyStatus!=='0' && item.policyStatus!=='1'">已评价</span>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="noData_Tip" data-ng-if="!comm.length">没有匹配数据</div>
+					<uib-pagination data-ng-show="comm.length"
+						total-items="total"
+						ng-model="pageIndex"
+						items-per-page="pageSize"
+						previous-text="<"
+						next-text=">"
+						max-size="10"
+						ng-change="selectPage(pageIndex)"></uib-pagination>
+				</div>
+				<div id="mutual" class="content"  data-ng-show="type === 'mutual'">
+					<ul class="nav nav-tabs">
+					    <li ng-class="{active: pageCategory === 'mutual/all'}" class="nav-item">
+					        <a href="javascript:" ng-click="jumpPage('mutual/all', 1)" class="nav-link">全部</a>
+					    </li>
+					    <li ng-class="{active: pageCategory === 'mutual/2'}" class="nav-item">
+					        <a href="javascript:" ng-click="jumpPage('mutual/2', 1)" class="nav-link">待支付</a>
+					    </li>
+					    <li ng-class="{active: pageCategory === 'mutual/4'}" class="nav-item">
+					        <a href="javascript:" ng-click="jumpPage('mutual/4', 1)" class="nav-link">待发货</a>
+					    </li>
+					    <li ng-class="{active: pageCategory === 'mutual/6'}" class="nav-item">
+					        <a href="javascript:" ng-click="jumpPage('mutual/6', 1)" class="nav-link">已发货</a>
+					    </li>
+					    <li ng-class="{active: pageCategory === 'mutual/7'}" class="nav-item">
+					        <a href="javascript:" ng-click="jumpPage('mutual/7', 1)" class="nav-link">已完成</a>
+					    </li>
+					    <li ng-class="{active: pageCategory === 'mutual/8'}" class="nav-item">
+					        <a href="javascript:" ng-click="jumpPage('mutual/8', 1)" class="nav-link">已取消</a>
+					    </li>
+					</ul>
+					<div class="table-responsive">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<td>订单名称</td>
+									<td>订单号</td>
+									<td>实付款(元)</td>
+									<td>商品信息</td>
+									<td>购买时间</td>
+									<td>操作</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-ng-repeat="item in mutual">
+									<td><a data-ng-href="products_control.html?prodAid={{ item.prodAid }}">{{ item.prodName }}</a></td>
+									<td>{{ item.ordAid }}</td>
+									<td>{{ ((item.prodPriceAmt+item.shipFee) / 100).toFixed(2) }}</td>
+									<td>
+										<span data-ng-if="item.color">{{ item.color+'/' }}</span>
+										<span data-ng-if="item.color">{{ item.size+'/' }}</span>
+										{{ item.itemCount }}
+									</td>
+									<td>{{ item.ordDate | date:"yyyy-MM-dd HH:mm:ss" }}</td>
+									<td>
+										<span data-ng-hide="item.status=='8'">
+											<a data-ng-show="item.status==='2'" data-ng-href="{{ payControl(item) }}">支付</a>
+											<a class="evaluate" data-ng-if="item.cmtYn!=='1' && (item.status=='6' || item.status=='7')" href='javascript:void(0)' data-ng-click="evaluateBaobao(item)">评价</a>
+											<span class="evaluate_gray" data-ng-if="item.cmtYn==='1' && (item.status=='6' || item.status=='7')">已评价</span>
+											<a data-ng-if="item.status=='6' || item.status=='7'" href='personal_distribution.html?ordaid={{ item.ordAid }}'>查看物流</a>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="noData_Tip" data-ng-if="!mutual.length">没有匹配数据</div>
+					<uib-pagination data-ng-show="mutual.length"
+						total-items="total"
+						ng-model="pageIndex"
+						items-per-page="pageSize"
+						previous-text="<"
+						next-text=">"
+						max-size="10"
+						ng-change="selectPage(pageIndex)"></uib-pagination>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div id="page_footer" ng-include="'include/footer.html'"></div>
+</div>
+<script src="js/common.js"></script>
+<script src="js/personal_baobao.js"></script>
+</body>
+</html>

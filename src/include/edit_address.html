@@ -1,0 +1,21 @@
+<div id="editAddressDialog">
+	<form autocomplete="off" name="editAddressFrom">
+		<ul>
+			<li class="tip">请填写以下收货信息（该信息将被提供给第三方物流公司用于实物商品的配送）</li>
+			<li>
+				地址：
+				<select ng-model="address.province" required ng-options="key as key for (key,value) in division" ng-change="address.city='';address.district='';">  
+					<option value="">省</option>  
+				</select>  
+				<select ng-model="address.city" required ng-options="key as key for (key,value) in division[address.province]" ng-change="address.district='';">  
+					<option value="">市</option>  
+				</select>  
+				<select ng-model="address.district" required ng-options="value as value for value in division[address.province][address.city]">  
+					<option value="">区</option>
+				</select>
+				<input type="text" data-ng-model="address.detail" placeholder="详细地址" required>
+			</li>
+			<footer><button type="button" ng-disabled="editAddressFrom.$invalid" class="but but-blue but-extend" ng-click="submit()">确定</button></footer>
+		</ul>
+	</form>
+</div>

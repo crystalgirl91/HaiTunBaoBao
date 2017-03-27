@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html ng-app="personal_jf">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>我的积分</title>
+<script>$PageName = "personal_jf";</script>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/personal_jf.css">
+</head>
+<body class="ng-cloak">
+<div class="page_wrapper">
+	<div id="page_header" ng-include="'include/header.html'"></div>
+	<div class="section_wrapper">
+		<div id="personal_aside" personal-aside="personal_jf.html" class="pull_left"></div>
+		<div class="content pull_right" data-ng-controller="personalJfController" jump-rules>
+			<div id="jf_infor">
+				<ul>
+					<li>
+						<div class="img"></div>
+						<div class="useable">
+							<div class="tip">
+								<label>可用积分：</label>
+								<span>{{ avalicredit }}</span>
+							</div>
+							<div class="rule"><a id="jump_rule" href="#credits_rule">积分规则</a></div>
+						</div>
+						<a class="exachange" href="./credits.html">积分兑换</a>
+					</li>
+					<li>
+						<div class="expire">
+							<div class="tip">
+								<label>即将过期积分：</label>
+								<span>{{ willexpirecredit }}</span>
+							</div>
+							<div class="expire_time">
+								( {{ expireDate }}-12-31 过期）
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div id="jf_record">
+				<ul class="nav">
+					<li>积分记录</li>
+				</ul>
+				<div class="table-responsive">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<td>时间</td>
+								<td>积分变化</td>
+								<!-- <td>类型</td> -->
+								<td>来源</td>
+								<td>备注</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr data-ng-repeat="item in records">
+								<td>{{ item.createdate | date:"yyyy-MM-dd HH:mm:ss" }}</td>
+								<td class="point_amt">{{ item.point_amt }}</td>
+								<!-- <td>{{ item.type }}</td> -->
+								<td>{{ item.remark }}</td>
+								<td>{{ item.tip }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="noData_Tip" data-ng-if="!records.length">没有匹配数据</div>
+				<uib-pagination data-ng-show="records.length"
+					total-items="total"
+					ng-model="pageIndex"
+					items-per-page="pageSize"
+					previous-text="<"
+					next-text=">"
+					max-size="10"
+					ng-change="selectPage(pageIndex)"></uib-pagination>
+
+				<div class="rules">
+					<h2>积分规则</h2>
+					<p>1. 会员使用积分时，按照“先进先出”（即最早生效的积分最先扣除）的原则进行扣减。</p>
+					<p>2. 会员用积分全额或部分兑换产品/服务时不再获得积分。</p>
+					<p>3. 使用范围仅包括网站价格中注明包含的项目，未注明包含的项目(如机票配送和退改签费、酒店加床、餐饮及其他费用、度假产品中私人付费部分及其他费用等)不予兑换。</p>
+					<p>4. 订单取消，积分可退还。退还原则是： 每笔积分自身是有有效期设定的，如若由于退单导致需要退回积分的情形，按该笔积分原有效期恢复。</p>
+					<p>5. 积分不能转移到其他会员帐号使用，可以代其他人预订产品。（该文本只是临时占位，非标准，请注意！）</p>
+				</div
+			</div>
+		</div>
+	</div>
+	<div id="page_footer" ng-include="'include/footer.html'"></div>
+</div>
+<script src="js/common.js"></script>
+<script src="js/personal_jf.js"></script>
+</body>
+</html>

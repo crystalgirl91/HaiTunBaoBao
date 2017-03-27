@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html data-ng-app="credits">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>积分商城</title>
+<script>$PageName = "credits";</script>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/credits.css">
+</head>
+<body class="ng-cloak">
+<div class="page_wrapper">
+	<div id="page_header" ng-include="'include/header.html'"></div>
+	<div ng-controller="creditsController">
+		<section class="banner">
+			<div class="banner-main">
+				<div class="banner-block-wrap">
+					<div class="banner-block">
+						<h4 class="banner-block-h4"><span>我的积分</span><strong>{{allcredits}}</strong></h4>
+						<a class="but but-empty-blue banner-block-btn" href="./credits_records.html">兑换记录</a>
+						<p class="line-dashed"></p>
+						<ul class="autoh nono">
+							<li class="banner-block-item">小积分抽大奖</li>
+							<li class="banner-block-item">买保险赚积分</li>
+							<li class="banner-block-item">奖品奖不停</li>
+							<li class="banner-block-item">高保障还能赚积分</li>
+						</ul>
+						<div class="but-group">
+							<a class="but but-orange" href="./lottery.html">去抽奖</a>
+							<a class="but but-blue" href="./products.html">买保险</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="main">
+			<h3 class="head">热门商品</h3>
+			<ul class="nono autoh pro-list">
+				<li class="pro-list-item" ng-repeat="item in rows"><a href="{{item._href}}" class="pro-list-a">
+						<div class="img-wrap"><img ng-src="{{item.img}}" alt=""></div>
+						<div class="word-wrap">
+							<p class="title">{{item.prodName}}</p>
+							<p class="price-line"><span class="points">{{item.payPointAmt}}积分+</span><span class="money">{{item.prodPriceAmt/100}}元</span></p>
+						</div></a>
+				</li>
+			</ul><a id="loadmore" class="loadmore" ng-if="page < pages" ng-click="loadmore()">查看更多</a>
+		</section>
+	</div>
+	<div id="page_footer" ng-include="'include/footer.html'"></div>
+</div>
+<script src="js/common.js"></script>
+<script src="js/credits.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+@import "include/variables";
+.nav-tabs{
+	a{
+		background: none !important;
+		.unreadcount{
+			display: block;
+			width: 15px;
+			height: 15px;
+			line-height: 15px;
+			text-align: center;
+			vertical-align: top;
+			background-color: @main-color2;
+			border-radius: 50%;
+			font-size: 12px;
+			color: #fff;
+			position: absolute;
+			left: 70%;
+			top: 10%;
+			&.type2{
+				left: 78%;
+			}
+		}
+	}
+	li.active{
+		a{
+			color: @main-color1 !important;
+			background: none;
+			position: relative;
+		}
+	}
+}
+.data{
+	#mess{
+		padding: 20px;
+		.table{
+			border: 1px solid #ddd;
+			tr.read{
+				td{
+					color: #999;
+					a{
+						color: #999;
+					}
+				}
+			}
+			td{
+				font-size: 14px;
+				text-align: center;
+				a{
+					font-size: 14px;
+					color: @main-color1;
+				}
+				&.content{
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					max-width: 100px;
+				}
+				.title{
+					width: 220px;
+					display: inline-block;
+					// white-space: nowrap;
+					// overflow: hidden;
+					// text-overflow: ellipsis;
+					word-break: break-all;
+				}
+			}
+			thead{
+				td{
+					background-color: #eee;
+				}
+			}
+			.point_amt{
+				color: @main-color2;
+			}
+		}		
+	}
+
+}

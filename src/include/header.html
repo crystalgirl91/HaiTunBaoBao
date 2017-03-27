@@ -1,0 +1,20 @@
+<div class="section_wrapper container">
+	<div class="row">
+		<div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
+			<a href="." class="logo"></a>
+		</div>
+		<div class="col-md-8 col-lg-8 hidden-xs hidden-sm">
+			<div class="slogon"></div>
+		</div>
+		<div id="top_navigator" class="col-md-14 col-lg-14 col-xs-20 col-sm-20" ng-controller="topNavigatorController">
+			<a href="index.html" class="btn btn-link top_hot_link active">风险热点</a>
+			<a href="products.html" class="btn btn-link top_product_link">产品中心</a>
+			<a href="personal_account.html" class="btn btn-link top_personal_link">我的管理
+				<span ng-if="authed">({{ authName }})</span>
+			</a>
+			<a ng-hide="authed" href="signin.html" class="btn login">登录</a>
+			<a ng-hide="authed" href="signup.html#/step1" class="btn register">注册</a>
+			<a ng-show="authed" href="javascript:" ng-click="signout()" class="btn btn-primary">退出登录</a>
+		</div>
+	</div>
+</div>

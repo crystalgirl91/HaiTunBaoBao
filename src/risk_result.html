@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html ng-app="risk_result">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>风险评估结果</title>
+<script>$PageName = "risk_result";</script>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/risk_result.css">
+</head>
+<body class="ng-cloak">
+<div class="page_wrapper">
+	<div id="page_header" ng-include="'include/header.html'"></div>
+	<div class="section_wrapper" id="risk_result" data-ng-controller="riskresultController">
+		<h3>风险评估结果</h3>
+		<section>
+			<p>您当前风险得分为</p>
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid"
+			viewBox="0 0 228 228"
+			width="228" height="228">
+				<defs>
+				<g id="ring">
+					<path d="M0 114
+				A114 114 0 1 1 228 114
+				A114 114 0 0 1 0 114
+				L3 114 A111 111 0 0 0 225 114
+				A111 111 0 0 0 223.31 94.73 L216.42 95.94
+				A104 104 0 0 0 214.91 88.84 L221.7 87.15
+				A111 111 0 0 0 215.4 68.85 L209.01 71.7
+				A104 104 0 0 0 205.83 65.17 L212.01 61.89
+				A111 111 0 0 0 201.47 45.66 L195.95 49.97
+				A104 104 0 0 0 191.29 44.41 L196.49 39.73
+				A111 111 0 0 0 182.34 26.53 L178.03 32.05
+				A104 104 0 0 0 172.16 27.78 L176.07 21.98
+				A111 111 0 0 0 159.15 12.6 L156.3 18.99
+				A104 104 0 0 0 149.57 16.27 L151.96 9.69
+				A111 111 0 0 0 133.27 4.69 L132.06 11.58
+				A104 104 0 0 0 124.87 10.57 L125.6 3.61
+				A111 111 0 0 0 106.26 3.27 L106.75 10.25
+				A104 104 0 0 0 99.53 11.01 L98.55 4.08
+				A111 111 0 0 0 79.7 8.43 L81.86 15.09
+				A104 104 0 0 0 75.04 17.57 L72.42 11.08
+				A111 111 0 0 0 55.18 19.87 L58.89 25.8
+				A104 104 0 0 0 52.87 29.86 L48.76 24.2
+				A111 111 0 0 0 34.15 36.89 L39.19 41.76
+				A104 104 0 0 0 34.33 47.15 L28.97 42.65
+				A111 111 0 0 0 17.87 58.5 L23.93 62
+				A104 104 0 0 0 20.53 68.41 L14.23 65.34
+				A111 111 0 0 0 7.3 83.4 L14.03 85.33
+				A104 104 0 0 0 12.27 92.38 L5.43 90.92
+				A111 111 0 0 0 3 114z"/>
+				</g>
+					<filter id="xor" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%">
+						<feImage x="0" y="0" width="100%" height="100%" xlink:href="#desc_bg" result="bg"/>
+						<feImage x="0" y="0" width="100%" height="100%" xlink:href="#desc_fg" result="fg"/>
+				 		<feComposite operator="xor" in="bg" in2="fg"/>
+					</filter>
+
+				<linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+					<stop offset="0%" style="stop-color:{{ risk.colorFrom  }};stop-opacity:1" />
+					<stop offset="100%" style="stop-color:{{ risk.colorTo  }};stop-opacity:1" />
+				</linearGradient>
+				<g clip-rule="nonzero"><clippath id="circle"><circle cx="114" cy="114" r="112" clip-rule="evenodd"/></clippath></g>
+				</defs>
+
+				<g clip-path="url(#circle)" filter="url(#xor)">
+					<g id="desc_bg">
+						<path d="M0 {{ risk.waterline }}q 15 -10 30 0t30 0 30 0 30 0 30 0 30 0 30 0 18 0 V 228 H 0z" fill="url(#grad)"/>
+					</g>
+					<g id="desc_fg" font-family="sans-serif" font-weight="bold" fill="{{ risk.colorTo }}">
+						<text x="50%" y="50%" text-anchor="middle" font-size="40"
+						><tspan font-size="60">{{ risk.level }}</tspan>分</text>
+						<text x="50%" y="80%" font-size="36" text-anchor="middle"
+							dominant-baseline="top"><tspan>{{ risk.eval }}</tspan>风险</text>
+					</g>
+				</g>
+				<use xlink:href="#ring" fill="{{ risk.colorTo }}"/>
+			</svg>
+			<div class="tip-wrapper">
+			    <h2 class="tip-header">评估结果</h2>
+			    <p class="tip">
+			       {{ risktip }}
+			    </p>
+			</div>
+			<a href="risk_evaluate.html#/risk_evaluate1">重新评估</a>
+		</section>
+		<h3>推荐产品</h3>
+		<section>
+			<ul class="product-list">
+				<li class="product-list-item" ng-repeat="row in recommends">
+					<a href="{{row._href}}">
+						<span class="flag">{{row._prodType_name}}</span>
+						<div class="image-wrap"><img ng-src="{{row.recommend_proimg}}" alt=""></div>
+						<div class="product-mess clearfix">
+							<p class="line">{{row.recommend_proname}}</p><span title="{{(row.price/100).toFixed(2)}}" class="strong">￥{{(row.price/100).toFixed(1)}}</span>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</section>
+	</div>
+	<div id="page_footer" ng-include="'include/footer.html'"></div>
+</div>
+<script src="js/common.js"></script>
+<script src="js/risk_result.js"></script>
+</body>
+</html>

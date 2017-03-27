@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="products.pay">
+	<head>
+		<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>支付</title>
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="./css/products_pay.css">
+	</head>
+	<body class="ng-cloak">
+		<div class="page_wrapper">
+			<div id="page_header" ng-include="'include/header.html'"></div>
+			<div class="main-body products-main-body" ng-controller="productsPayController">
+				<h3 class="head-left">订单支付</h3>
+				<div id="pay-list">
+					<section class="pay-mess">
+						<div class="form-line">
+							<label for="">订单编号：{{data.trade_no}}</label>
+						</div>
+						<div class="form-line">
+							<label for="">订单内容：{{data.body}}</label>
+						</div>
+						<div class="form-line">
+							<label for="">支付金额：<span class="strong">{{(data.money/100).toFixed(2)}}</span>元</label>
+						</div>
+					</section>
+					<section class="bank-list">
+						<dl class="autoh nono" id="paytype1-dl">
+							<dt class="bank-title">选择支付方式</dt>
+							<dd class="bank-item" ng-if="allow_wangyin">
+								<input id="radiozhifubao" hidden class="bank-radio" type="radio" name="payType" ng-model="data.paytype" value="zhifubao" required>
+								<label for="radiozhifubao" class="bank-label"></label>
+							</dd>
+							<dd class="bank-item" ng-if="allow_weixin">
+								<input id="radioweixin" hidden class="bank-radio" type="radio" name="payType" ng-model="data.paytype" value="weixin" required>
+								<label for="radioweixin" class="bank-label"></label>
+							</dd>
+						</dl>
+						<dl class="autoh nono" id="paytype2-dl" ng-if="allow_wangyin">
+							<dt class="bank-title">使用银行卡支付</dt>
+							<dd ng-repeat="radio in radios" class="bank-item">
+								<input class="bank-radio" id="radio{{$index}}" hidden type="radio" name="payType" ng-click="data.paytype = 'wangyin'" ng-model="data.channel" value="{{ radio.code }}" required>
+								<label for="radio{{$index}}" class="bank-label"></label>
+							</dd>
+						</dl>
+					</section>
+				</div>
+				<form autocomplete="off" action="{{actionUrl}}" name="payForm" method="POST" novalidate>
+					<section ng-if="data.paytype==='zhifubao'" class="ng-hide">
+						<input type="text" name="trade_no" ng-model="data.trade_no">
+						<input type="text" name="body" ng-model="data.body">
+						<input type="text" name="money" ng-model="data.money">
+						<input type="text" name="isuType" ng-model="data.isuType">
+						<input type="text" name="surl" ng-model="data.surl">
+						<input type="text" name="furl" ng-model="data.furl">
+						<input type="text" name="show_url" ng-model="data.show_url">
+					</section>
+					<section ng-if="data.paytype==='weixin'" class="ng-hide">
+						<input type="text" name="trade_no" ng-model="data.trade_no">
+						<input type="text" name="money" ng-model="data.money">
+						<input type="text" name="body" ng-model="data.body">
+						<input type="text" name="attach" ng-model="data.attach">
+						<input type="text" name="isuType" ng-model="data.isuType">
+						<input type="text" name="surl" ng-model="data.surl">
+						<input type="text" name="furl" ng-model="data.furl">
+					</section>
+					<section ng-if="data.paytype==='wangyin'" class="ng-hide">
+						<input type="text" name="trade_no" ng-model="data.trade_no">
+						<input type="text" name="money" ng-model="data.money">
+						<input type="text" name="body" ng-model="data.body">
+						<input type="text" name="isuType" ng-model="data.isuType">
+						<input type="text" name="attach" ng-model="data.attach">
+						<input type="text" name="surl" ng-model="data.surl">
+						<input type="text" name="furl" ng-model="data.furl">
+						<input type="text" name="channel" ng-model="data.channel">
+					</section>
+					<div class="footer-btn pay-footer-btn">
+						<button class="but but-blue but-extend" type="submit">确认支付</button>
+					</div>
+				</form>
+			</div>
+			<div id="page_footer" ng-include="'include/footer.html'"></div>
+		</div>
+		<script src="js/common.js"></script>
+		<script src="./js/products_pay.js"></script>
+	</body>
+</html>

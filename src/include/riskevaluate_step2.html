@@ -1,0 +1,55 @@
+<section id="risk_evaluate2">
+	<h3>请填写您的保障信息</h3>
+	<div>
+		<p>步骤二</p>
+		<ul>
+			<li>
+				<label class="label">社保：</label>
+				<label><input type="radio" name="social_insurance" data-ng-model="risk.social_insurance" value="h1"/> 有</label>
+				<label class="last-child"><input type="radio" name="social_insurance" data-ng-model="risk.social_insurance" value="h2"/> 无</label>
+			</li>
+			<li>
+				<label class="label">健康保障类：</label>
+				<select data-ng-model="risk.healthinsurance" requird>
+					<option value="">请选择</option>
+					<option value="i1.1">0-10万</option>
+					<option value="i1.2">10-30万</option>
+					<option value="i1.3">30-50万</option>
+					<option value="i1.4">50万以上</option>
+				</select>
+			</li>
+			<li>
+				<label class="label">意外保障类：</label>
+				<select data-ng-model="risk.accidentinsurance" requird>
+					<option value="">请选择</option>
+					<option value="i2.1">0-10万</option>
+					<option value="i2.2">10-30万</option>
+					<option value="i2.3">30-50万</option>
+					<option value="i2.4">50万以上</option>
+				</select>
+			</li>
+			<li>
+				<label class="label">财产保障类：</label>
+				<select data-ng-model="risk.propertyinsurance" requird>
+					<option value="">请选择</option>
+					<option value="j1.1">0-10万</option>
+					<option value="j1.2">10-30万</option>
+					<option value="j1.3">30-50万</option>
+					<option value="j1.4">50万以上</option>
+				</select>
+			</li>
+			<li>
+				<label class="label">责任保障类：</label>
+				<select data-ng-model="risk.dutyinsurance" requird>
+					<option value="">请选择</option>
+					<option value="j2.1">0-10万</option>
+					<option value="j2.2">10-30万</option>
+					<option value="j2.3">30-50万</option>
+					<option value="j2.4">50万以上</option>
+				</select>
+			</li>
+		</ul>
+		<a href="javascript:void(0)" data-ng-click="evaluate()">立即评估</a>				
+	</div>
+
+</section>

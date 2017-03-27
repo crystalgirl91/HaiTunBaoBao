@@ -1,0 +1,5 @@
+<section class="pagination">
+	<span class="btn-pre btn-item" ng-class="{'disabled':page<= 1}" ng-click="render(page-1,pages)">&nbsp;</span>
+	<span class="btn-item" ng-class="{'on':number == page}" ng-repeat="number in numbers" ng-click="render(number,pages)">{{number}}</span>
+	<span class="btn-next btn-item" ng-class="{'disabled':page>= pages}"  ng-click="render(page+1,pages)">&nbsp;</span>
+</section>

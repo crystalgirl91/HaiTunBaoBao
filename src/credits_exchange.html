@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app="credits_exchange">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>商品兑换</title>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="./css/credits.css">
+</head>
+<body class="ng-cloak">
+<div class="page_wrapper">
+	<div id="page_header" ng-include="'include/header.html'"></div>
+	<div class="main-body" ng-controller="creditsExchangeController">
+		<section class="top-block autoh">
+			<div class="img-wrap"><img alt="" ng-src="{{details.img}}"></div>
+			<div class="word-wrap">
+				<form action="" autocomplete="off">
+					<dl class="tip-list">
+						<dt class="tip-title">{{details.prodName}}</dt>
+						<dl class="tip-item"><span class="tip-item-label">会员价</span><span><i class="strong orange">{{details.payPointAmt}}</i>&nbsp;积分<i class="strong">&nbsp;+&nbsp;</i></span><span class="tip-item-span margin-long"><i class="strong orange">{{details.prodPriceAmt/100}}</i>&nbsp;元</span><span class="tip-item-span">我的积分：<span class="total-points">{{allcredits}}</span></span></dl>
+						<dl class="tip-item"><span class="tip-item-label">市场参考价</span><span class="market_money">{{details.prodListAmt/100}}元</span></dl>
+						<dl class="tip-item"><span class="tip-item-label">配送</span><span class="tip-item-span">仅限大陆地区</span><span class="tip-item-span">下单后3~5个工作日发货</span></dl>
+						<dl class="tip-item"><span class="tip-item-label">数量</span>
+							<input type="number" max="100" min="1" ui-spinner hidden ng-model="proNumber" required>
+						</dl>
+						<dl class="tip-item">
+							<button id="btn" class="but but-blue" ng-click="submit()">立即换购</button>
+						</dl>
+					</dl>
+				</form>
+			</div>
+		</section>
+		<section id="tab">
+			<tabs>
+				<tabset tab-title="商品详情" class="active">
+					<div class="tab-wrap" ng-bind-html="details.prodInfo">
+					</div>
+				</tabset>
+				<tabset tab-title="兑换明细">
+					<div class="table-wrap">
+						<table class="table table-borderd table-gray">
+							<thead>
+								<th>用户名</th>
+								<th>单价</th>
+								<th>兑换数量</th>
+								<th>兑换时间</th>
+							</thead>
+							<tbody>
+								<tr ng-repeat="item in history_list">
+									<td>{{item.custName}}</td>
+									<td>{{(item.price/100).toFixed(2)}}元 + {{item.point}}积分</td>
+									<td>{{item.itemCount}}</td>
+									<td>{{item.ordDate | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+						<div class="text-right">
+						<uib-pagination
+							total-items="page.totals"
+							items-per-page="page.pagesize"
+							ng-model="page.page"
+							previous-text="<"
+							next-text=">"
+							ng-change="get_history()"></uib-pagination></div>
+				</tabset>
+			</tabs>
+		</section>
+	</div>
+	<div id="page_footer" ng-include="'include/footer.html'"></div>
+</div>
+<script src="js/common.js"></script>
+<script src="./js/credits_exchange.js"></script>
+</body>
+</html>

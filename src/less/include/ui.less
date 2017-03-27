@@ -1,0 +1,140 @@
+//spinner 商品数量加减样式
+.addtool{
+	display: inline-block;
+	width: auto;
+	font-size: 0px;
+	height: 30px;
+	.addtool-btn{
+		border:1px solid @border-color;
+		width: 30px;
+		height: 30px;
+		font-size: @base-fontsize;
+		line-height: 30px;
+		display:inline-block;
+		text-align: center;
+		vertical-align: middle;
+		cursor: pointer;
+		-webkit-user-select: none;
+	}
+	.addtool-input{
+		width: 62px;
+		height: 100%;
+		border-top: 1px solid @border-color;
+		border-bottom: 1px solid @border-color;
+		border-right: 0px;
+		border-left:0px;
+		padding: 4px 10px;
+		line-height: 20px;
+		outline: none;
+		font-size: @base-fontsize;
+		display: inline-block;
+		vertical-align: middle;
+		text-align: center;
+	}
+}
+
+//tab标签页样式
+.tab{
+	background-color: @bgcolor;
+	width: 100%;
+	padding-bottom: 30px;
+	@extend(.nono);
+	.tab-head{
+		border-bottom: 1px solid @border-color;
+		padding: 0px;
+		margin: 0px;
+		.tab-title{
+			&.active{
+				background-image: url(../../img/credits/border.png);
+				background-position: center bottom;
+				background-size: 100% auto;
+				background-repeat: no-repeat;
+				color: @fbcolor;
+			}
+			cursor: pointer;
+			display: inline-block;
+			font-size: @base-fontsize;
+			line-height: 30px;
+			padding: 13px 0px;
+			color: @fgcolor;
+			width: 100px;
+			text-align: center;
+		}
+	}
+	.tab-content{
+		position: relative;
+		.tab-item{
+			display: none;
+			&.active{
+				display: block;
+			}
+		}
+	}
+}
+
+//表单select 样式
+.form{
+		color: #333;
+		font-size: 15px;
+		legend{
+			display: block;
+			line-height: 30px;
+			dl{
+				margin: 0;
+				position: relative;
+				dd{
+					margin: 0;
+					display: inline-block;
+					&.key{
+						width: 80px;
+					}
+					&.value{
+						&:hover{
+							cursor: pointer;
+						}
+						width: 260px;
+						line-height: 38px;
+						border: 1px solid #e1e1e1;
+						padding-left: 10px;	
+						.arrow{
+							display: inline-block;
+							float: right;
+							width: 38px;
+							height: 38px;
+							background: #f7f7f7 url("../../img/personal/arrow.png") no-repeat center center;
+							border-left: 1px solid #e1e1e1;
+						}
+					}
+				}
+				.fixed-selectbox{
+					&.hide{
+						display: none;
+					}
+					&.show{
+						display: block;
+					}
+					position: absolute;
+					z-index: 99;
+					background-color: #fff;
+					top: 40px;
+					right: 0;
+					width: 270px;
+					border: 1px solid #e1e1e1;
+					border-top: 0;
+					border-bottom: 0;
+					li{
+						line-height: 38px;
+						border-bottom: 1px solid #e1e1e1;
+						a{
+							color: #333;
+							display: block;
+							padding-left: 10px;
+						}
+						&:hover{
+							background-color: #fafafa;
+						}
+					}
+				}
+			}
+		}
+}

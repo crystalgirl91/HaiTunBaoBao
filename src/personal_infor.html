@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="personal_infor">
+	<head>
+		<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>个人信息</title>
+		<script>$PageName = "personal_infor";</script>
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/personal_infor.css">
+	</head>
+	<body class="ng-cloak">
+		<div class="page_wrapper">
+			<div id="page_header" ng-include="'include/header.html'"></div>
+			<div class="section_wrapper">
+				<div id="personal_aside" personal-aside="personal_infor.html" class="pull_left"></div>
+				<div class="content pull_right">
+					<div id="infor" data-ng-controller='inforController'>
+						<ul>
+							<li class="pic" upload-img id="headWrapper">
+								<div class="img"><img data-ng-src="{{ infor.img || '../img/personal/user_default.jpg'}}"></div>
+								<a href="javascript:void(0)">上传头像
+									<form id="headForm" action="javascript:">
+										<input id="headImage" name="img" accept="image/*" type="file">
+									</form>
+								</a>
+							</li>
+							<li class="nick_name">
+								<label><i></i>用户名</label>
+								<span><input type="text" minlength="1" maxlength="20" data-ng-model="infor.nick_name" data-ng-disabled="!is_edit" data-ng-class="{can_edit:is_edit}"/></span>
+								<a href="javascript:void(0)" class="edit" data-ng-click="edit()">{{ is_edit?'取消':'修改' }}</a>
+								<!-- <button type="button" class="edit" data-ng-if="is_edit" data-ng-click="edit()"></button> -->
+								<a href="javascript:void(0)" class="edit" data-ng-if="is_edit" data-ng-click="editName()" data-ng-disabled="!infor.nick_name">保存</a>
+							</li>
+							<li>
+								<label><i></i>绑定手机号</label>
+								<span>{{ infor.cust_phone_uk.replace(infor.cust_phone_uk.substr(3, 4), '****') }}</span>
+								<a href="personal_editPhone.html" class="edit">修改</a>
+							</li>
+							<li>
+								<label><i></i>绑定邮箱</label>
+								<span>{{ infor.email }}</span>
+								<a href="personal_editEmail.html" class="edit">修改</a>
+							</li>
+							<li>
+								<label><i></i>登陆密码</label>
+								<span>已设置</span>
+								<a href="personal_editPassword.html" class="edit">修改</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="page_footer" ng-include="'include/footer.html'"></div>
+		</div>
+		<script src="js/common.js"></script>
+		<script src="js/personal_infor.js"></script>
+	</body>
+</html>

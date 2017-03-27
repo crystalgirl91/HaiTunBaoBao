@@ -1,0 +1,32 @@
+<div id="evaluate">
+	<form autocomplete="off" name="evaluateFrom">
+		<ul>
+			<li>
+				<label>评分：</label>
+				<ul class="stars">
+					<li data-ng-class="{checked: evaluate.grade>=1}">
+						<input type="radio" name='star' value='1' data-ng-model="evaluate.grade">
+					</li>
+					<li data-ng-class="{checked: evaluate.grade>=2}" >
+						<input type="radio" name='star' value='2'data-ng-model="evaluate.grade">
+					</li>
+					<li data-ng-class="{checked: evaluate.grade>=3}">
+						<input type="radio" name='star' value='3' data-ng-model="evaluate.grade">
+					</li>
+					<li data-ng-class="{checked: evaluate.grade>=4}">
+						<input type="radio" name='star' value='4' data-ng-model="evaluate.grade">
+					</li>
+					<li data-ng-class="{checked: evaluate.grade>=5}">
+						<input type="radio" name='star' value='5' data-ng-model="evaluate.grade">
+					</li>
+				</ul>
+			</li>
+			<li>
+				<label>评价：</label>
+				<textarea data-ng-model="evaluate.content" placeholder="请输入评价内容" name='remark' required></textarea>
+			</li>
+		</ul>
+	</form>
+	<footer><button type="button" ng-disabled="evaluateFrom.$invalid" class="but but-blue but-extend" ng-click="submit()">发表评价</button></footer>
+</div>
+

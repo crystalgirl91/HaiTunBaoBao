@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html ng-app="post">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>海豚保险</title>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/post.css">
+</head>
+<body class="ng-cloak">
+
+<div class="page_wrapper">
+	<div id="page_header" ng-include="'include/header.html'"></div>
+	<div class="container-fluid section_wrapper main_block" ng-controller="postController">
+		<div class="row">
+			<div class="col-sm-17 col-md-17">
+				<div class="panel panel-default post-panel">
+					<div class="post-header">
+						<h1>{{ post.title }}</h1>				
+					</div>
+					<div class="post-header-l">
+						<div class="post-tools">
+							<time class="time">{{ post.createdate | date:'medium' }}</time>
+							<span class="share-group">
+								<a href="javascript:" onclick="return document.getElementById('comments').scrollIntoView()">评论<span ng-if="comment_count">({{comment_count}})</span></a><span class="v-divider">&nbsp;</span>
+								<a href="javascript:" share-link>分享</a><span class="item v-divider">&nbsp;</span>
+								<a href="javascript:" ng-if="fav_aid === '-1'" ng-click="addFavorite('Z', id)">收藏</a>
+								<a href="javascript:" ng-if="fav_aid !== '-1'" ng-click="delFavorite(fav_aid)">已收藏</a>
+							</span>
+						</div>
+						<div ng-bind-html="post.content"></div>
+					</div>
+				</div>
+
+				<div class="panel panel-default post-panel" ng-if="recommend_pro_link">
+					<div class="post-header">
+						<h1>相关保险产品推荐</h1>
+					</div>
+					<ul class="product-list">
+						<li class="product-list-item ng-scope">
+							<a ng-href="{{recommend_pro_link}}" ng-switch on="post.recommend_protype">
+								<span class="flag" ng-switch-when="N">保险产品</span>
+								<span class="flag" ng-switch-when="C">风险检测产品</span>
+								<div class="image-wrap"><img ng-src="{{post.recommend_proimg}}" alt="{{post.recommend_proname}}"></div>
+								<div class="product-mess clearfix">
+									<p class="line">{{post.recommend_proname}}</p>
+									<span class="strong">￥{{ (post.recommend_proprice / 100).toFixed(2) }}</span>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div id="comments" class="panel panel-default post-comments">
+					<div class="panel-heading">评论列表</div>
+					<div>
+						<div class="media" ng-repeat="comment in comments">
+							<div class="media-left">
+								<a href="javascript:"><img class="media-object img-circle" ng-src="{{comment.img}}"></a>
+							</div>
+							<div class="media-body">
+								<div class="m-item m-name">{{comment.nick_name}}</div>
+								<div class="m-item m-cont">评论内容: {{ comment.content }}</div>
+								<div class="m-item m-time">
+									<span class="m-it">{{ comment.cmt_date | date:'MM-dd HH:mm' }}</span> <span class="m-diviser">|</span> <a class="m-it" href="javascript:" ng-click="comment._isopen=!comment._isopen;comment._response=''">回复</a>
+									<div class="m-tips my-form-group" ng-show="comment._isopen">
+										<input type="text" ng-model="comment._response" class="m-input" placeholder="回复{{comment.nick_name}}" required>
+										<button ng-disabled="!comment._response"  class="but but-blue m-tips-btn" ng-click="addCommentToUser(comment)">回复</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="more">
+							<a href="javascript:" ng-click="get_comments()" ng-show="page <= pages">更多评论 >></a>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel panel-default post-comments">
+					<div class="panel-heading">发表评论</div>
+					<div class="pabel-body">
+						<form id="commetForm" name="commentForm">
+							<div class="my-form-group">
+								<textarea class="m-textarea" name="commentTextarea" ng-model="newcomments" required></textarea>
+								<div class="btn-wrap"><button type="submit" ng-disabled="commentForm.$invalid" class="but but-blue but-extend" ng-click="addComment();newcomments=''">发表评论</button></div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-sm-7 col-md-7">
+				<div class="panel panel-default">
+					<div class="panel-heading">海豚保宝二维码</div>
+					<div class="pabel-body"><img  class="qrcode_img" ng-src="http://m.htbaobao.com/images/qrcode1.png"></div>
+				</div>
+				<!--div class="panel panel-default">
+					<a ng-href="{{ad_url}}">
+						<img class="adver_img" alt="{{post.recommend_proname}}" ng-src="{{post.recommend_proimg}}">
+					</a>
+				</div-->
+			</div>
+		</div>
+	</div>
+	<div id="page_footer" ng-include="'include/footer.html'"></div>
+</div>
+<script src="js/common.js"></script>
+<script src="js/post.js"></script>
+</body>
+</html>

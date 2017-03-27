@@ -1,0 +1,129 @@
+.lottery-body{
+	background: center top url(../img/credits/lottery_bg.jpg) no-repeat;
+	width: 1480px;
+	height: 786px;
+	margin: 0 auto;
+	position: relative;
+	font-size: 18px;
+	.item-1{position: absolute; top: 345px; left: 330px}
+	.item-2{position: absolute; top: 345px; left: 530px}
+	.item-3{position: absolute; top: 530px; left: 604px}
+	.item-4{position: absolute; top: 648px; left: 440px}
+	.item-5{position: absolute; top: 530px; left: 270px}
+	.my_credits{
+		position: absolute;
+		top: 226px;
+		left: 1000px
+	}
+	/*461 464*/
+	.arrow{
+		background: center center url(../img/credits/lottery_arrow.png) no-repeat;
+		position: absolute;
+		width: 210px;
+		height: 258px;
+		left: 356px;
+		top: 310px;
+		transform-origin: 105px 153px;
+		transition: transform 8s ease 0s;
+		transform: rotate(1deg);
+	}
+	.go_button{
+		background: center center url(../img/credits/lottery_button.png) no-repeat;
+		position: absolute;
+		width: 166px;
+		height: 170px;
+		left: 379px;
+		top: 379px;
+		cursor: pointer;
+	}
+	.qrcode{
+		width: 140px;
+		position: absolute;
+		top: -4px;
+		left: 1179px;
+		display: block;
+	}
+	.my_list{
+		position: absolute;
+		top: 270px;
+		left: 937px;
+		height: 44px;
+		width: 200px;
+	}
+	.lottery-list{
+		position: absolute;
+		top: 400px;
+		left: 900px;
+		height: 326px;
+		width: 284px;
+		.lottery-list-wrapper{
+			height: 300px;
+			overflow: hidden;
+			ul{
+				li{
+					padding: 6px;
+					border-bottom: 1px dashed #7e7e7e;
+				}
+			}
+		}
+		.lottery-total{
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 284px;
+			text-align: center;
+		}
+	}
+}
+#global_masker{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: rgba(0, 0, 0, .6);
+	.dialog{
+		position: relative;
+		width: 448px;
+		height: 220px;
+		margin: 18% auto;
+		background-color: #fff7e8;
+		border: 4px solid #ffc358;
+		border-radius: 4px;
+		box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+		.close_button{
+			position: absolute;
+			right: 8px;
+			top: -14px;
+			width: 36px;
+			height: 40px;
+			line-height: 42px;
+			text-align: center;
+			font-size: 18px;
+			background-color: #fbc40f;
+			border-radius: 0 0 18px 18px;
+		}
+		.dialog_message{
+			height: 158px;
+			padding: 65px 100px 0 100px;
+		}
+		.dialog_button{
+			background-color: #f14b46;
+			border-radius: 3px;
+			color: #fde9e8;
+			height: 40px;
+			width: 286px;
+			display: block;
+			text-align: center;
+			line-height: 40px;
+			margin: 0 auto;
+		}
+		.dialog_button:hover{
+			background-color: #ff6560;
+		}
+		.dialog_button:active{
+			background-color: #e61610;
+		}
+	}
+}

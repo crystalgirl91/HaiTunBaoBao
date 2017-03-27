@@ -1,0 +1,79 @@
+@import "include/variables";
+
+#design{
+	padding: 0 20px 20px;
+	background-color: #fff;
+	.nav{
+		li{
+			display: inline-block;
+			line-height: 40px;
+			font-size: 15px;
+			&:last-child{
+				float: right;
+				a{
+					color: @main-color1;
+					padding: 0;
+					&:hover{
+						background: none;
+					}
+				}
+			}
+		}
+	}
+	.form{
+		color: #333;
+		font-size: 14px;
+		background: url('../img/personal/form_bg.png') no-repeat center center;
+		padding: 10px 0 10px;
+		background-size: 100% 100%;
+
+		ul{
+			display: block;
+			width: 560px;
+			line-height: 30px;
+			margin: auto;
+			h2{
+				font-size: 15px;
+				font-weight: normal;
+			}
+			li{
+				margin: 30px 0;
+				.dsRemark{
+					display: inline-block;
+					vertical-align: top;
+					&>textarea{
+						resize: none;
+						outline: none;
+						padding: 5px 10px;
+						width: 440px;
+						height: 72px;
+						line-height: normal;
+						border: 1px solid #e1e1e1;
+					}
+				}
+				select{
+					border: 1px solid #e1e1e1;
+					display: inline-block;
+					width: 260px;
+					height: 38px;
+					line-height: 38px;
+					outline: none;
+					padding-left: 10px;
+					text-align: right;
+				}
+				.label{
+					display: inline-block;
+					width: 86px;
+					font-size: 14px;
+					font-weight: normal;
+					color: #000;
+					text-align: right;
+				}
+				.input-radio{
+					margin-right: 20px;
+					font-weight: normal;
+				}
+			}
+		}
+	}
+}

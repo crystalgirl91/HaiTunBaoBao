@@ -1,0 +1,252 @@
+@import "include/variables";
+.page_wrapper{
+	position: relative;
+}
+.section_wrapper > .content{
+	background: none;
+}
+#userInfo{
+	background-color: #fff;
+	border-top: 4px solid @main-color1;
+	padding: 12px 30px 30px 30px;
+	color: #666;
+	font-size: 14px;
+	li{
+		padding: 8px 0;
+	}
+	.name{
+		color: #000;
+		margin-right: 65px;
+	}
+	.pic{
+		float: left;
+		width: 94px;
+		height: 94px;
+		border-radius: 100%;
+		overflow: hidden;
+		margin-right: 20px;
+		img{
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	.level_img{
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		vertical-align: bottom;
+		margin-right: 5px;
+		&.level0{
+			background: url('../img/personal/level0.png') no-repeat center center;
+			background-size: 100% 100%;
+		}
+	}
+	.message{
+		display: inline-block;
+		vertical-align: bottom;
+		margin: 0 5px 0 10px;
+		width: 22px;
+		height: 18px;
+		background: url('../img/personal/icon_message.png') no-repeat center center;
+	}
+	.message_link{
+		position: relative;
+		.unred{
+			position: absolute;
+			right: 0px;
+			top: -4px;
+			color: #fff;
+			display: inline-block;
+			width: 15px;
+			height: 15px;
+			background-color: #ff9600;
+			border-radius: 100%;
+			font-size: 12px;
+			text-align: center;
+			line-height: 15px;
+		}
+	}
+	.line{
+		margin: 0 4px 0 5px;
+		color: #bbb;
+	}
+	.logout{
+		color: @main-color1;
+		&:hover{
+			color: lighten(@main-color1, 5%)
+		}
+	}
+	.last_login{
+		font-size: 12px;
+		color: #bbb;
+	}
+	label{
+		margin-right: 90px;
+		font-size: 15px;
+		font-weight: normal;
+		.label{
+			color: #000;
+			font-size: 14px;
+			font-weight: normal;
+		}
+		.quan, .dw, .jf, .risk_num{
+			color: @main-color2;
+			&:hover{
+				color: lighten(@main-color2, 10%)
+			}
+		}
+		.risk_level{
+			color: @main-color1;
+			margin: 0 16px;
+		}
+		.risk_eval{
+			width: 112px;
+			height: 30px;
+			line-height: 28px;
+			color: @main-color2;
+			border: 1px solid @main-color2;
+			border-radius: 4px;
+			display: inline-block;
+			text-align: center;
+			.transition(all,0.2s,0s,ease-in);
+			&:hover{
+				background-color: @main-color2;
+				color: #fff;
+			}
+		}
+	}
+	.pull_right.btns a{
+		display: inline-block;
+		width: 92px;
+		height: 36px;
+		color: #fff;
+		text-align: center;
+		line-height: 36px;
+		border-radius: 4px;
+		font-size: 15px;
+		.transition(background-color,0.2s,0s,ease-in);
+		&.sign{
+			background-color: @main-color2;
+			&:hover{
+				background-color: lighten(@main-color2, 5%)
+			}
+		}
+		&.bbs{
+			background-color: @main-color1;
+			margin-left: 20px;
+			&:hover{
+				background-color: lighten(@main-color1, 5%)
+			}
+		}
+	}
+}
+
+.type{
+	li{
+		display: inline-block;
+		margin-right: 20px;
+		position: relative;
+		width: 90px;
+		text-align: center;
+		line-height: 45px;
+		&.active{
+			a{
+				color: @main-color1;
+			}
+		}
+		input{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			outline: none !important;
+			cursor: pointer;
+			opacity: 0;
+		}
+		a{
+			font-size: 15px;
+			color: #000;
+		}
+	}
+}
+#userProduct{
+	margin-top: 30px;
+	background: #fff;
+	padding: 0 20px;
+	height: 475px;
+	.table{
+		border: 1px solid #ddd;
+		td{
+			font-size: 14px;
+			text-align: center;
+			a{
+				font-size: 14px;
+			}
+			.evaluate_gray{
+				color: #999;
+			}
+		}
+		thead{
+			td{
+				background-color: #eee;
+			}
+		}
+	}
+}
+
+#sign_success{
+	position: absolute;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	.content{
+		width: 572px;
+		height: 318px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+		background: url('../img/personal/sign_bg.png') no-repeat center center;
+		.lottery{
+			position: absolute;
+			width: 260px;
+			height: 40px;
+			line-height: 40px;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+			bottom: 60px;
+			color: #fff;
+			text-align: center;
+			font-size: 18px;
+			background-color: @main-color2;
+			border-radius: 4px;
+			cursor: pointer;
+			.transition(background-color, 0.2s, 0s, ease-in);
+			&:hover{
+				background-color: lighten(@main-color2, 10%);
+			}
+		}
+		.close{
+			position: absolute;
+			width: 35px;
+			height: 35px;
+			line-height: 30px;
+			top: 0;
+			right: 10px;
+			color: #fff;
+			text-align: center;
+			font-size: 38px;
+			background-color: @main-color1;
+			border-radius: 100%;
+			opacity: 1;
+		}
+	}
+}

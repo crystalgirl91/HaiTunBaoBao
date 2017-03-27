@@ -1,0 +1,112 @@
+
+@import "include/variables.less";
+
+.fr{ float:right;}
+.fl{ float: left;}
+.mr4{ margin-right: 4px;}
+
+.m-signinBg{
+  background:#7ec6fe url("../img/signin/signinBg.png") center center no-repeat;
+  height: 570px;
+  margin: 0 auto 64px auto;
+}
+.position{ position: relative;}
+.signin-box{
+  width: 368px;
+  padding: 38px 44px 20px 44px;
+  border:6px solid rgba(81,172,253,0.8);
+  background: @bgcolor;
+  border-radius: 4px;
+  position: absolute;
+  right: 10px;
+  top:76px;
+  h5{
+    float:left;
+    font-size: 24px;
+    color:@banner-color-gray2;
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+  }
+  p{
+    line-height: 30px;
+    font-size: 12px;
+    color:@banner-color-gray2;
+    float:right;
+    margin: 0;
+    padding: 0;
+  }
+  a{ color:@btn-blue;}
+}
+.clear:after{
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.m-input{
+  width: 100%;
+  height: 38px;
+  line-height: 38px;
+  border: 1px solid #e1e1e1;
+  border-radius: 0 !important;
+  box-shadow: none  !important;
+  padding: 10px 10px 10px 46px !important;
+  margin: 45px 0 28px 0 !important;
+  font-size: 14px;
+}
+.m-inpt-tab{
+  width: 33px;
+  height: 29px;
+  border-right: 1px solid #ddd;
+  display: block;
+  position: absolute;
+  left: 0;
+  text-align: center;
+  padding-top: 7px;
+  padding-left: 2px;
+  margin-top: 1px;
+  &.m-passwd{
+    background: url(../img/signin/lock.png) no-repeat center center;
+  }
+  &.m-user{
+    background: url(../img/signin/name.png) no-repeat center center;
+  }
+}
+
+.m-btn{
+  display: inline-block;
+  width: 100%;
+  height: 40px;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 4px;
+  font-size: 16px;
+  background: #ff9600;
+  border:none;
+  outline: none;
+  -webkit-transition: background-color 0.2s 0s ease-in;
+  -o-transition: background-color 0.2s 0s ease-in;
+  transition: background-color 0.2s 0s ease-in;
+}
+.m-forget{
+  float: right;
+  color:@btn-empty-gray;
+  font-size: 12px;
+  padding: 20px 0 14px 0;
+  a{
+    color:@btn-empty-gray;
+  }
+}
+.m-party{
+  font-size: 12px;
+  color:@fgcolor6;
+  padding-top: 15px;
+}
+.m-party span{
+  margin-right: 8px;
+  display: inline-block;
+}

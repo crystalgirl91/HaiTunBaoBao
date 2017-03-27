@@ -1,0 +1,58 @@
+<div class='dialog-content'>
+<form autocomplete="off" action="" novalidate name="addressDialogForm">
+	<ul>
+		<li class="tip">请填写以下收货信息（该信息将被提供给第三方物流公司用于实物商品的配送）</li>
+		<li class="autoh">
+			<label for="" class="address-label">地址：</label>
+			<select hidden  ng-model="address.province" ng-options="key as key for (key,value) in division" required>  
+				<option value="">省</option>
+			</select>
+			<div class="select-inline" ng-if="true">
+				<input ng-show="address.province" class="select-match" type="text" ng-model="address.province" disabled>
+				<input ng-show="!address.province" class="select-match" type="text" disabled value="省">
+				<span class="select-btn" ng-class="{'on':on}" ng-click="on = !on"></span>
+				<ul class="select-menu" ng-show="on">
+					<li class="select-item" ng-repeat="(key,value) in division" ng-click="address.province=key;$parent.on=false;address.city='';address.district=''">{{key}}</li>
+				</ul>
+			</div>
+
+			<select hidden ng-model="address.city" ng-options="key as key for (key,value) in division[address.province]" required ng-change="address.district=''">  
+				<option value="">市</option>  
+			</select>
+			<div class="select-inline" ng-if="true">
+				<input ng-show="address.city" class="select-match" type="text" ng-model="address.city" disabled>
+				<input ng-show="!address.city" class="select-match" type="text" disabled value="市">
+				<span class="select-btn" ng-class="{'on':on}" ng-click="on = !on"></span>
+				<ul class="select-menu" ng-show="on">
+					<li class="select-item" ng-repeat="(key,value) in division[address.province]" ng-click="address.city=key;$parent.on=false;address.district=''">{{key}}</li>
+				</ul>
+			</div>
+
+			<select hidden  ng-model="address.district" ng-options="value as value for value in division[address.province][address.city]" required>  
+				<option value="">区</option>
+			</select>
+			<div class="select-inline" ng-if="true">
+				<input ng-show="address.district" class="select-match" type="text" ng-model="address.district" disabled>
+				<input ng-show="!address.district" class="select-match" type="text" disabled value="区">
+				<span class="select-btn" ng-class="{'on':on}" ng-click="on = !on"></span>
+				<ul class="select-menu" ng-show="on">
+					<li class="select-item" ng-repeat="value in division[address.province][address.city]" ng-click="address.district=value;$parent.on=false;">{{value}}</li>
+				</ul>
+			</div>
+
+			<!-- <select ng-model="address.province" ng-options="key as key for (key,value) in division" ng-change="address.city='';address.district='';">  
+				<option value="">省</option>  
+			</select>  --> 
+			<!-- <select ng-model="address.city" ng-options="key as key for (key,value) in division[address.province]" ng-change="address.district='';">  
+				<option value="">市</option>  
+			</select>  
+			<select ng-model="address.district" ng-options="value as value for value in division[address.province][address.city]">  
+				<option value="">区</option>
+			</select>
+			<input type="text" data-ng-model="address.detail" placeholder="详细地址"> -->
+		</li>
+		<li class="input-wrap"><input class="input" type="text" data-ng-model="address.detail" placeholder="详细地址" required></li>
+		<li class="footer-btn"><button type="button" ng-disabled="addressDialogForm.$invalid" ng-click="submit()" class="but but-blue">提交</button></li>
+	</ul>
+</form>
+</div>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="personal_editEmail">
+	<head>
+		<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>个人信息</title>
+		<script>$PageName = "personal_editEmail";</script>
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/personal_editEmail.css">
+	</head>
+	<body class="ng-cloak">
+		<div class="page_wrapper">
+			<div id="page_header" ng-include="'include/header.html'"></div>
+			<div class="section_wrapper">
+				<div id="personal_aside" personal-aside="personal_infor.html" class="pull_left"></div>
+				<div class="content pull_right">
+					<div id="editEmail" data-ng-controller='editEmailController'>
+						<h2>绑定邮箱</h2>
+						<form autocomplete="off" name="editEmailFrom" method="post" class="form">
+							<div class="my-form-group">
+								<label class="form-label">绑定邮箱号：</label>
+								<input placeholder="请输入您的邮箱"  ng-model="email" type="email" class="my-form-control" required>
+							</div>
+							<div class="my-form-group">
+								<label class="form-label"></label>
+								<button class="but but-blue" style="width: 274px;" type="button" data-ng-disabled="editEmailFrom.$invalid" data-ng-click="submit()">提交</button>
+							</div>
+						</form>
+<!-- 						<section id="editEmail1">
+							<form name="editEmailFrom1" method="post" class="form">
+								<div class="form-group">
+									<label class="form-label">常用邮箱</label>
+									<input placeholder="请输入邮箱" ng-model="data.email" type="email" class="form-control" required>
+								</div>
+								<div class="form-group">
+									<label class="form-label">验证码：</label>
+									<input placeholder="验证码"  ng-model="data.code" type="text" class="form-control code" required>
+								</div>
+								<div class="form-group">
+									<label class="form-label"></label>
+									<footer><a href="#editEmail2" data-ng-class="{disabled: editEmailFrom1.$invalid}">下一步</a><span class="disable"></span></footer>
+								</div>
+							</form>
+						</section>
+						<section id="editEmail2">
+							<p>激活邮件已发送至你的邮箱 : <span class="email">{{ data.email }}</span>。请进入邮箱查看邮件， 并激活帐号。</p>
+							<footer><a href="http://www.qq.com" target="_blank" class="but but-blue">前往激活</a></footer>
+							<ul class="tip">
+								<li>没收到邮件？</li>
+								<li>1、请检查邮箱地址是否正确，你可以返回 <a href="#editEmail1" class="tipbut">重新填写</a>；</li>
+								<li>2、检查你的邮件垃圾箱；</li>
+								<li>3、若仍未收到确认，请尝试 <a href="javascript:void(0)" class="tipbut" data-ng-click="resend()">重新发送</a>；</li>
+							</ul>
+						</section>
+						<section id="editEmail3">
+							<h2>恭喜您绑定邮箱成功！</h2>
+							<footer><a href="javascript:void(0)" class="but but-blue" style="width: 220px;">回到个人信息页面</a></footer>
+						</section> -->
+					</div>
+				</div>
+			</div>
+			<div id="page_footer" ng-include="'include/footer.html'"></div>
+		</div>
+		<script src="js/common.js"></script>
+		<script src="js/personal_editEmail.js"></script>
+	</body>
+</html>

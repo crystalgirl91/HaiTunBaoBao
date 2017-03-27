@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="announces">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>网站公告</title>
+<script>$PageName = "announces";</script>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/announces.css">
+</head>
+<body class="ng-cloak">
+<div class="page_wrapper">
+	<div id="page_header" ng-include="'include/header.html'"></div>
+	<div class="section_wrapper container-fluid">
+		<div class="col-md-5 col-lg-5" ng-include="'include/static_aside.html'"></div>
+		<div class="col-md-19 col-lg-19">
+			<div class="panel panel-default" ng-controller="announcesController">
+				<div class="panel-heading"><h3>网站公告</h3></div>
+				<div class="panel-body">
+					<ul>
+						<li class="item" ng-repeat="item in items">
+							<a ng-href="announce.html?id={{ item.msg_aid }}">
+								{{ item.title }}
+								<span class="date">{{ item.createdate | date:"yyyy-MM-dd" }}</span>
+							</a>
+						</li>
+					</ul>
+					<uib-pagination
+						total-items="pageTotal"
+						items-per-page="pageSize"
+						ng-model="pageIndex"
+						previous-text="<"
+						next-text=">"
+						ng-change="selectPage()"></uib-pagination>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="page_footer" ng-include="'include/footer.html'"></div>
+</div>
+<script src="js/common.js"></script>
+<script src="js/announces.js"></script>
+</body>
+</html>

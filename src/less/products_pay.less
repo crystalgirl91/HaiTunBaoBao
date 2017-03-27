@@ -1,0 +1,161 @@
+@import "include/variables";
+ul,dl,dt,dd{
+	list-style-type: none;
+	&:extend(.nono);
+}
+p{
+	&:extend(.nono);
+}
+.main-body{
+	width: 1200px;
+	margin: 0px auto 64px auto;
+}
+#pay-list{
+	background-color: @bgcolor;
+	padding-bottom: 40px;
+}
+.head-left{
+	font-size: 18px;
+	text-align: left;
+	width: 100%;
+	line-height: 2;
+	color: @fgcolor6;
+	&:extend(.nono);
+}
+.pay-mess{
+	padding:36px 36px 36px 112px;
+	border-bottom: 1px solid @border-color;
+	background:url(../img/credits/pay-icon.jpg) no-repeat 20px center;
+	.form-line{
+		font-size: 14px;
+		margin-bottom: 18px;
+		color: @fgcolor;
+		line-height: 1;
+		>label{
+			font-weight: normal;
+		}
+		.strong{
+			font-size:36px;
+			color: @main-color2;
+		}
+	}
+}
+.bank-list{
+	padding-left: 112px;
+	padding-top: 18px;
+	.bank-item{
+		width: 230px;
+		height:48px;
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: auto auto;
+		margin-right: 20px;
+		margin-bottom: 20px;
+		float: left;
+		cursor: pointer;
+		.bank-radio{
+			height: 100%;
+			width: 100%;
+			&:checked~.bank-label{
+				border:1px solid #60b0f7;
+			}
+		}
+		.bank-label{
+			border: 1px solid @border-color;
+			display: inline-block;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	.bank-title{
+		color: @fgcolor6;
+		font-size: 18px;
+		line-height: 58px;
+		font-weight: normal;
+	}
+}
+
+#paytype1-dl .bank-item{
+	&:nth-child(2){
+		background-image: url(../img/credits/zhifubao.jpg);
+	}
+	&:nth-child(3){
+		background-image: url(../img/credits/weixin.jpg);
+	}
+}
+#paytype2-dl .bank-item{
+		&:nth-child(2){
+			background-image: url(../img/credits/1.jpg);
+		}
+		&:nth-child(3){
+			background-image: url(../img/credits/2.jpg);
+		}
+		&:nth-child(4){
+			background-image: url(../img/credits/3.jpg);
+		}
+		&:nth-child(5){
+			background-image: url(../img/credits/4.jpg);
+		}
+		&:nth-child(6){
+			background-image: url(../img/credits/5.jpg);
+		}
+		&:nth-child(7){
+			background-image: url(../img/credits/6.jpg);
+		}
+		&:nth-child(8){
+			background-image: url(../img/credits/7.jpg);
+		}
+		&:nth-child(9){
+			background-image: url(../img/credits/8.jpg);
+		}
+		&:nth-child(10){
+			background-image: url(../img/credits/9.jpg);
+		}
+		&:nth-child(11){
+			background-image: url(../img/credits/10.jpg);
+		}
+		&:nth-child(12){
+			background-image: url(../img/credits/11.jpg);
+		}
+		&:nth-child(13){
+			background-image: url(../img/credits/12.jpg);
+		}
+		&:nth-child(14){
+			background-image: url(../img/credits/13.jpg);
+		}
+		&:nth-child(15){
+			background-image: url(../img/credits/14.jpg);
+		}
+		&:nth-child(16){
+			background-image: url(../img/credits/15.jpg);
+		}
+		&:nth-child(17){
+			background-image: url(../img/credits/16.jpg);
+		}
+		&:nth-child(18){
+			background-image: url(../img/credits/17.jpg);
+		}
+		&:nth-child(19){
+			background-image: url(../img/credits/18.jpg);
+		}
+		&:nth-child(20){
+			background-image: url(../img/credits/19.jpg);
+		}
+}
+
+.footer-btn{
+	width: 258px;
+}
+.pay-footer-btn{
+	padding-left: 112px;
+	background-color: #fff;
+	padding-bottom: 112px;
+	width: 100%;
+	.but{
+		width: 230px;
+	}
+}
+
+#pro_list{
+	min-height: 600px;
+}

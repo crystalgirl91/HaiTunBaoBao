@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title> </title>
+		<script>$PageName = "credits_exchange";</script>
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="./css/credits_records.css">
+	</head>
+	<body class="ng-cloak">
+		<div class="page_wrapper">
+			<div id="page_header" ng-include="'include/header.html'"></div>
+			<div class="main-body" ng-controller="creditsRecordsController">
+				<div class="table-wrap">
+					<h3 class="main-title">我的兑换记录</h3>
+					<div class="min-height">
+						<table class="table table-borderd table-gray">
+							<thead>
+								<th>商品名称</th>
+								<th>单价</th>
+								<th>数量</th>
+								<th>兑换时间</th>
+								<th>状态</th>
+							</thead>
+							<tbody>
+								<tr ng-repeat="item in history_list">
+									<td>{{item.prodName}}</td>
+									<td><span class="strong">{{item.payPointAmt}}</span>积分+<span class="strong">{{(item.prodPriceAmt/100).toFixed(1)}}</span>元</td>
+									<td>{{item.itemCount}}</td>
+									<td>{{item.ordDate|date:"yyyy-MM-dd HH:mm:ss"}}</td>
+									<td>
+										<!-- 2:待支付， 4:待发货， 6:已发货， 8，已取消 -->
+										<span ng-if="item.status==2">待支付</span>
+										<span ng-if="item.status==4">待发货</span>
+										<span ng-if="item.status==6">已发货</span>
+										<span ng-if="item.status==8">已取消</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="text-right">
+						<uib-pagination
+							total-items="totals"
+							items-per-page="pagesize"
+							ng-model="page"
+							previous-text="<"
+							next-text=">"
+							ng-change="get_list()"></uib-pagination>
+						 </div>
+				</div>
+			</div>
+			<div id="page_footer" ng-include="'include/footer.html'"></div>
+		</div>
+		<script src="js/common.js"></script>
+		<script src="./js/credits_records.js"></script>
+	</body>
+</html>

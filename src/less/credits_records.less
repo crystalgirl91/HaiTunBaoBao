@@ -1,0 +1,64 @@
+@import "include/variables";
+@import "include/ui";
+body{
+	color: @fgcolor6;
+}
+.main-body{
+	width: 1200px;
+	margin: 0 auto;
+	margin-bottom: 25px;
+}
+.table-wrap{
+	padding: 20px @base-fontsize;
+	min-height: 500px;
+	background-color: #fff;
+	margin-top: 20px;
+	padding:0px 15px;
+	min-height: 1088px;
+	.main-title{
+		font-size: 14px;
+		line-height: 20px;
+		padding: 20px 0px;
+		color: @fgcolor;
+		font-weight: normal;
+		margin: 0px;
+		border-bottom: 1px solid @border-color;
+		margin-bottom: 20px;
+	}
+}
+.min-height{
+	min-height: 490px;
+}
+.table{
+	width: 100%;
+	font-size: @base-fontsize;
+	margin-bottom: 40px;
+	thead{
+		tr>th{
+			line-height: 30px;
+			padding: 7px;
+			border-bottom: 0px;
+		}
+	}
+	tr{
+		border-bottom: 1px solid @border-color;
+		td{
+			line-height: 30px;
+			padding: 7px;
+		}
+	}
+	&.table-gray{
+		thead{
+			background-color: @table-bggray;
+		}
+	}
+	&.table-borderd{
+		border:1px solid @border-color;
+	}
+}
+.text-right{
+	text-align: right;
+}
+.strong{
+	color: @main-color2;
+}

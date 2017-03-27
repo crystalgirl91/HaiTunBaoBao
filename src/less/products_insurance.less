@@ -1,0 +1,316 @@
+@import "include/variables";
+ul,dl,ol{
+	list-style: none;
+}
+ul,dl,ol,h1,h2,h3,h4,h5,h6,p{
+	padding: 0px;
+	margin: 0px;
+}
+.main-body{
+	width: 100%;
+	overflow: hidden;
+}
+.height-auto{
+	height: auto !important;
+}
+
+.banner-bg{
+	background-color: @banner-bg-blue;
+	// background-image: url(../img/products/banner-bg.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+	background-position: center;
+	width: 1480px;
+	margin: 0 auto;
+}
+.banner{
+	height: 300px;
+	width: 1200px;
+	margin: 0 auto;
+	position: relative;
+	// .banner-left{
+	// 	position: absolute;
+	// 	height: 100%;
+	// 	right: 632px;
+	// 	width: 60%;
+	// 	background-repeat: no-repeat;
+	// 	background-size: auto 100%;
+	// 	background-position: center center;
+	// }
+	.banner-right{
+		height: 100%;
+		width: 308px;
+		overflow: hidden;
+		background: url(../img/products/notice-bg.png) no-repeat center center;
+		background-size: auto 100%;
+		position: absolute;
+		right: 0px;
+		.dl{
+			padding-left: 50px;
+			margin: 0px;
+			padding-right: 30px;
+		}
+		dt.h2{
+			color: @fgcolor;
+			font-size:18px;
+			line-height: 48px;
+			padding: 36px 0px 0px 0px;
+			margin: 0px;
+		}
+		.dd-content,.dd-more{
+			font-size: 12px;
+			margin: 0px;
+			line-height: 20px;
+		}
+		.dd-content{
+			height: 140px;
+    		overflow: hidden;
+		}
+		.dd-more{
+			color: @main-color2;
+			text-align: right;
+			cursor: pointer;
+			font-size: 13px; 
+			margin-top: 10px;
+			padding-right: 20px;
+			background-image: url(../img/products/icon-more.png);
+			background-repeat: no-repeat;
+			background-position: right center;
+			background-size: 14px;
+		}
+	}
+	.banner-center{
+		color: @fgcolor;
+		padding: 27px;
+		box-sizing: border-box;
+		position: absolute;
+		right: 300px;
+		.but{
+			padding-right: 30px;
+			padding-left: 30px;
+		}
+		.title{
+			font-size: 18px;
+			margin-bottom: 16px;
+			margin-top: 0px;
+			.text-overflow{
+				line-height: 30px;
+				float: left;
+				width: 200px;
+			    overflow: hidden;
+			    text-overflow: ellipsis;
+			    display: inline-block;
+			    white-space: nowrap;
+			}
+		}
+		.labels{
+			.label-item{
+				margin-bottom: 5px;
+				line-height: 20px;
+				font-size: 14px;
+				>label{
+					margin-right: 18px;
+					width: 60px;
+					display: inline-block;
+					text-align: right;
+				}
+				>.bigger{
+					font-size: 18px;
+				}
+				.strong{
+					color: @main-color2;
+					font-size: 30px;
+
+				}
+			}
+		}
+		.banner-btn-left{
+			margin-right: 22px;
+		}
+	}
+}
+.wrap-1164{
+	width: 1164px;
+	margin: 0 auto;
+	.title{
+		font-size: 24px;
+		padding: 34px 0pc 24px 0px;
+		line-height: 26px;
+		text-align: center;
+		color: @fgcolor6;
+	}
+}
+.static-block{
+	background-color: #fff;
+	.static-bg{
+		height: 452px;
+		background: url(../img/products/main1.jpg) no-repeat center center;
+	}
+}
+.question-block{
+	.question-bg{
+		background-color: @global-bgcolor;
+	}
+	
+	.question-list{
+		height: 460px;
+		margin-bottom: 20px;
+		overflow: hidden;
+		.question-item{
+			font-size: 16px;
+			line-height: 30px;
+			padding-top: 10px;
+			.question-title{
+				color: @main-color1;
+				font-size: 16px;
+
+			}
+			.question-p{
+				font-size: 16px;
+				color: @fgcolor;
+				white-space: pre-wrap;
+			}
+		}
+	}
+}
+.more{
+	text-align: center;
+	.btn-more{
+		color: @main-color1;
+		font-size: 16px;
+	}
+	margin-bottom: 30px;
+}
+.rate-block{
+	background-color: #fff;
+	.rate-bg{
+		height: 565px;
+	}
+	.rate-list{
+		border-top: 1px solid @border-color;
+		margin-bottom: 40px;
+		.rate-item{
+			padding: 20px;
+			border-bottom: 1px solid @border-color;
+			.rate-line{
+				line-height: 20px;
+				margin-bottom: 14px;
+			}
+			.rate-mess{
+				display: inline-block;
+				.rate-time{
+					font-size: 12px;
+					color: @fgcolor6;
+				}
+				.rate-user{
+					font-size: 14px;
+					color: @fgcolor;
+				}
+			}
+			.rate-p{
+				word-break: break-word;
+				font-size: 16px;
+				line-height: 1;
+				color: @fgcolor;
+			}
+		}
+	}
+}
+.star-wrap{
+	position: relative;
+	vertical-align: middle;
+	display: inline-block;
+	width: 115px;
+	margin-right: 156px;
+	.star{
+		display: inline-block;
+		letter-spacing: 0px;
+		width: 16px;
+		height: 16px;
+		background-image: url(../img/products/star_null.jpg);
+		background-repeat: no-repeat;
+		background-size: 100% auto;
+		background-position: center;
+		&.active{
+			background-image: url(../img/products/star.jpg);
+		}
+	}
+}
+.banner-center .but.btn-store{
+	font-size: 14px;
+	font-weight: normal;
+	background-color: @share-btn-bg;
+	border: 0px;
+	padding: 5px 10px 5px 30px;
+	border-radius: 3px;
+	color: @fgcolor6;
+	background-color: @share-btn-bg;
+	background-position: 5px center;
+	background-repeat: no-repeat;
+	background-size: auto 20px;
+	background-image: url(../img/products/icon-collect.png);
+	&.active{
+		background-image: url(../img/products/icon-collect-on.png);
+	}
+}
+
+.share-box{
+	position: absolute;
+	top: 260px;
+	right: 30px;
+	box-shadow: 1px 1px 7px @border-color;
+	background-color: #fff;
+	.share-title{
+		padding-left: 32px;
+		border-bottom: 1px solid @border-color;
+		font-size: 18px;
+		font-weight: normal;
+		line-height: 50px;
+		color: @fgcolor;
+		.close-btn{
+			background: url(../img/share-close-btn.png) no-repeat center center;
+			color: #999;
+			float: right;
+			line-height: 50px;
+			height: 50px;
+			width: 50px;
+			text-align: center;
+			cursor: pointer;
+		}
+	}
+	.share-list{
+		padding: 32px;
+		.share-item{
+			width: 54px;
+			display: block;
+			height: 54px;
+			float: left;
+			margin: 0 32px 0 0;
+			padding: 0px;
+			&:nth-child(1){
+				background: url(../img/share-1.png) no-repeat center center;
+			}
+			&:nth-child(2){
+				background: url(../img/share-2.png) no-repeat center center;
+			}
+			&:nth-child(3){
+				background: url(../img/share-3.png) no-repeat center center;
+				margin-right: 0px;
+			}
+		}
+	}
+}
+#bdshare_weixin_qrcode_dialog{
+	height: 344px !important;
+	&.bd_weixin_popup{
+		padding: 17px;
+		box-shadow: 1px 1px 7px @border-color;
+		border: 0px;
+	}
+}
+.bd_weixin_popup .bd_weixin_popup_head{
+	font-size: 18px;
+	font-weight: normal;
+	line-height: 50px;
+	color: @fgcolor;
+}

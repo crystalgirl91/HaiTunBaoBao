@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="personal_coupon">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>我的优惠券</title>
+<script>$PageName = "personal_coupon";</script>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/personal_coupon.css">
+</head>
+<body class="ng-cloak">
+<div class="page_wrapper">
+	<div id="page_header" ng-include="'include/header.html'"></div>
+	<div class="section_wrapper">
+		<div id="personal_aside" personal-aside="personal_coupon.html#/unuse" class="pull_left"></div>
+		<div class="content pull_right">
+			<div id="coupon">
+				<ul class="nav nav-tabs">
+				    <li ng-class="{active: type === 'unuse'}" class="nav-item">
+				        <a href="#unuse" class="nav-link" data-ng-click="type='unuse'">未使用({{unuse.length?unuse.length:0}})</a>
+				    </li>
+				    <li ng-class="{active: type === 'used'}" class="nav-item">
+				        <a href="#used" class="nav-link" data-ng-click="type='used'">已使用({{used.length?used.length:0}})</a>
+				    </li>
+				    <li ng-class="{active: type === 'expire'}" class="nav-item">
+				        <a href="#expire" class="nav-link" data-ng-click="type='expire'">已失效({{expire.length?expire.length:0}})</a>
+				    </li>
+				</ul>
+				<div class="data">
+					<div data-ng-repeat="item in coupons track by item.usr_coup_aid" class="{{type}}wrapper">
+						<li class="left">
+							<ul>
+								<li class="dw"><label>¥ </label><span>{{ (item.dist_amt / 100) }}</span></li>
+								<li class='man'>满{{ (item.limt_amt_min / 100) }}元使用</li>
+								<li class='date'>有效期至 {{ item.enddate }}</li>
+							</ul>
+						</li>
+						<li class="middle">
+							<ul>
+								<li><label>序   列   号：</label>{{ item.usr_coup_aid }}</li>
+								<li class="nowrap" title="{{item.allow_buy_prod}}"><label>可购买商品：</label>{{ item.allow_buy_prod }}</li>
+								<li class="nowrap" title="{{item.coup_desc}}"><label>优惠券来源：</label>{{ item.coup_desc }}</li>
+							</ul>
+						</li>
+						<li class="{{type}}coupon">
+							<a href="products.html#/all/1" data-ng-if="type=='unuse'">立即使用</a>
+						</li>
+					</div>
+				</div>
+				<div class="noData_Tip" data-ng-if="!coupons.length">没有匹配数据</div>
+			</div>
+		</div>
+	</div>
+	<div id="page_footer" ng-include="'include/footer.html'"></div>
+</div>
+<script src="js/common.js"></script>
+<script src="js/personal_coupon.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+@import "include/variables";
+
+.section_wrapper{
+	form{
+		background-color: #fff;
+		padding: 30px 0;
+		min-height: 550px;
+		section{
+			width: 840px;
+			margin: 0 auto;
+			padding-left: 45px;
+			&#signup2, &#signup3{
+				padding-left: 150px;
+				&>div{
+					display: block;
+					padding-left: 80px;
+				}
+			}
+			.next{
+				width: 256px;
+				padding: 8px 0;
+				font-size: 15px;
+			}
+			&>ul{
+				margin-bottom: 50px;
+				li{
+					display: inline-block;
+					width: 185px;
+					height: 35px;
+					line-height: 35px;
+					text-align: center;
+					color: #666;
+					background: url('../img/signin/tab2.png') no-repeat center center;
+					background-size: 100% 100%;
+					&.active{
+						color: #fff;
+						background: url('../img/signin/tabAc2.png') no-repeat center center;
+						background-size: 100% 100%;
+						span{
+							color: @main-color1;
+						}
+					}
+					span{
+						display: inline-block;
+						width: 16px;
+						height: 16px;
+						line-height: 16px;
+						text-align: center;
+						background-color: #fff;
+						border-radius: 100%;
+						margin-right: 5px;
+						color: #666;
+						font-size: 12px;
+					}
+					&.step1{
+						color: #fff;
+						background: url('../img/signin/tabAc1.png') no-repeat center center;
+						background-size: 100% 100%;
+						span{
+							color: @main-color1;
+						}
+					}
+
+				}
+			}
+			&>div{
+				display: inline-block;
+				.my-form-group{
+					margin-bottom: 25px;
+					.form-label{
+						width: 90px;
+					}
+					.my-form-control{
+						width: 256px;
+						&.code{
+							width: 136px;
+						}
+					}
+					.tip{
+						font-size: 12px;
+						padding-left: 10px;
+						color: @main-color2;
+					}
+					.btn-sendverifycode{
+						margin-left: 10px;
+						font-size: 14px;
+						border-radius: 4px;
+						padding: 10px 18px;
+					}
+					.input_tip{
+						color: #999;
+						font-size: 13px;
+						margin-left: 10px;
+						&.my_input_tip{
+							display: inline-block;
+							width: 180px;
+							vertical-align: middle;
+						}
+					}
+					.stength{
+						color: #999;
+						font-size: 13px;
+						margin-top: 10px;
+						padding-left: 135px;
+						span{
+							display: inline-block;
+							background-color: #eee;
+							padding: 0 16px;
+							color: #fff;
+							&.active{
+								background-color: @main-color2;
+							}
+						}
+					}
+					.refresh{
+						display: inline-block;
+						width: 24px;
+						height: 24px;
+						background: url(../img/personal/refresh.png);
+						vertical-align: middle
+					}
+					.phoneNumber{
+						font-size: 18px;
+						font-weight: bold;
+						line-height: 34px;
+					}
+				}			
+			}
+			.erwm{
+				float: right;
+				p{
+					font-size: 13px;
+					color: #999;
+					margin-bottom: 35px;
+					text-align: right;
+				}
+				.img-qrcode{
+					width: 254px;
+					height: 282px;
+				}
+			}
+			.success{
+				font-size: 16px;
+				font-weight: bold;
+				margin-bottom: 40px;
+				i{
+					display: inline-block;
+					width: 50px;
+					height: 50px;
+					background: url('../img/signin/check-.png') no-repeat center center;
+					background-size: 100% 100%;
+					vertical-align: middle;
+					margin-right: 20px;
+					float: left;
+				}
+				.phone{
+					line-height: 30px;
+					font-size: 18px;
+					color: @main-color2;
+				}
+			}
+			&#passwd_reset3{
+				&>div{
+					padding-left: 160px;
+				}
+			}
+			.wxTip{
+				color: #999;
+				font-size: 13px;
+				margin-bottom: 10px;
+			}
+		}		
+	}
+
+}

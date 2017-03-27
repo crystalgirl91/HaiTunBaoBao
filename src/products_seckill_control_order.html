@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html ng-app="products_seckill_control_order">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>购买</title>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/products_seckill_control_order.css">    <!-- 基于products_control_order.less编译 -->
+</head>
+<body class="ng-cloak">
+<div class="page_wrapper">
+	<div id="page_header" ng-include="'include/header.html'"></div>
+	<section class="main" ng-controller="productsSeckillControlOrderController">
+		<h3 class="head-center">请认真核对以下信息</h3>
+		<form autocomplete="off" name="productsOrderForm" class="form" novalidate>
+			<fieldset>
+				<legend>收货地址</legend>
+				<div class="block">
+					<div id="addressList">
+						<ul class="addredd-list nono">
+							<input type="text" ng-model="data.address" ng-hide="true" required>
+							<li ng-repeat="(index, item) in addresses" class="adress-item">
+								<input type="radio" ng-value="item.addrAid" ng-change="setDataToCookie('ctrl_cookie_address',data.address)" ng-model="data.address" name="address" id="{{'checkbox' + index}}" hidden ng-checked="index===0" required>
+								<label for="checkbox{{index}}" class="address-item-border"><span class="address-wrap">{{item.region + item.address}}</span><a href="javascript:void(0)" class="a-btn" ng-click="openAddressModel(item)">修改</a><span class="checked-icon"></span></label>
+							</li>
+							<li class="adress-item">
+								<label class="address-item-border address-btn">
+									<a href="javascript:void(0)" ng-click="openNewAddressDialog()" class="icon-big"></a>
+								</label>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>收件人信息</legend>
+				<div class="block">
+					<div class="my-form-group">
+						<label for="inputName" class="form-label">收件人姓名</label>
+						<input id="inputName" maxlength="20" minlength="1" ng-change="setDataToCookie('ctrl_cookie_username',data.username)"  ng-model="data.username" type="text" class="my-form-control" required>
+					</div>
+					<div class="my-form-group">
+						<label for="inputTell" class="form-label">收件人手机号</label>
+						<input id="inputTell"  ng-model="data.usertell" ng-change="setDataToCookie('ctrl_cookie_usertell',data.usertell)" type="text" class="my-form-control" ng-pattern= "/^(13[0-9]|14[0-9]|15[0-9]|18[0-9])\d{8}$/" required>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="block">
+					<div class="my-form-group" ng-repeat="ext in data._prodExts">
+						<label for="inputName" class="form-label">{{ext.key}}</label>
+						<input id="inputName" ng-change="setDataToCookie('ctrl_cookie__prodExts',data._prodExts)" ng-model="ext.value" type="text" class="my-form-control"  required>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset id="detail">
+				<legend>商品清单</legend>
+				<div class="block">
+					<table class="table table-borderd table-gray">
+						<thead>
+							<tr>
+								<th>商品图片</th>
+								<th>商品名称</th>
+								<th>单价（元）</th>
+								<th>兑换数量</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><img ng-src="{{data.imageUrl}}" alt="" class="img-small"></td>
+								<td>{{data.prodName}}</td>
+								<td>{{data.price/ 100}}</td>
+								<td>{{data.proNum}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="footer">
+					<ul class="ul-mess">
+						<li>运费：<span>{{data.shipFee/100 +"元"}}</span></li>
+						<li>商品金额：<span  class="strong">{{data._totalmoney/100}}</span>&nbsp;元</li>
+						<!-- <li>应付金额：<span class="strong">{{(data._totalmoney)/100}}</span>&nbsp;元</li> -->
+						<li>应付金额：<span class="strong">{{(data._totalmoney + data.shipFee)/100}}</span>&nbsp;元</li>
+						<li ng-show="allcredits > 1000">
+							<label class="checkbox-inline">
+								<input type="checkbox" ng-model="data.is_points"  hidden ng-change="calculateMoneyWithPoints()">
+								<span>使用{{allcredits}}积分抵扣</span>
+							</label>
+						</li>
+						<li ng-show="coupons.length">
+							<label class="checkbox-inline">
+								<input type="checkbox" ng-model="data.is_coupon" hidden ng-change="calculateMoneyWithCoupon()">
+								<span>使用优惠券</span>
+							</label>
+							<select ng-disabled="!data.is_coupon" ng-model="data.coupon"  ng-options="coupon._name for coupon in coupons" ng-required="data.is_coupon" ng-change="calculateMoneyWithCoupon()">
+								<option value="">请选择</option>
+							</select>
+						</li>
+					</ul>
+					<button class="but but-blue but-extend"  type="button"  ng-disabled="productsOrderForm.$invalid || data.price-0===0" ng-click="submit()">提交订单</button>
+				</div>
+			</fieldset>
+		</form>
+	</section>
+	<div id="page_footer" ng-include="'include/footer.html'"></div>
+</div>
+<script src="js/common.js"></script>
+<script src="./js/products_seckill_control_order.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+@import "include/variables";
+
+#editPhone{
+	background-color: #fff;
+	font-size: 14px;
+	form{
+		padding: 50px 0 100px 200px;
+	}
+	h2{
+		font-weight: normal;
+		font-size: 15px;
+		border-bottom: 1px solid #eee;
+		padding-left: 30px;
+		height: 45px;
+		line-height: 45px;
+		margin: 0;
+	}
+	.refresh{
+		display: inline-block;
+		width: 24px;
+		height: 24px;
+		background: url(../img/personal/refresh.png);
+	}
+	.my-form-group{
+		margin-bottom: 25px;
+		.my-form-control{
+			width: 256px;
+		}
+		.tip{
+			font-size: 14px;
+			padding-left: 20px;
+			color: @main-color2;
+		}
+		&.code{
+			img{
+				margin-left: 8px;
+			}
+			a{
+				margin-left: 8px;
+				vertical-align: middle;
+			}
+			input{
+				width: 115px;
+			}
+		}
+		.btn-sendverifycode{
+			margin-left: 10px;
+			font-size: 14px;
+			border-radius: 4px;
+			padding: 10px 18px;
+		}
+	}
+}

@@ -1,0 +1,121 @@
+@import "include/variables";
+
+#infor{
+	padding: 40px;
+	background-color: #fff;
+	ul{
+		li{
+			&.nick_name{
+				input{
+					width: 200px;
+					height: 38px;
+					padding-left: 10px;
+					border: 1px solid transparent;
+					background-color: #fff;
+					&.can_edit{
+						border: 1px solid #e1e1e1;
+					}
+				}
+			}
+			border: 1px solid #e1e1e1;
+			margin-bottom: 30px;
+			padding: 20px 40px;
+			&:nth-child(2)>label i{
+				background: url("../img/personal/user_icon.png") left center no-repeat;
+			}
+			&:nth-child(3)>label i{
+				background: url("../img/personal/phone_icon.png") left center no-repeat;
+			}
+			&:nth-child(4)>label i{
+				background: url("../img/personal/email_icon.png") left center no-repeat;
+			}
+			&:nth-child(5)>label i{
+				background: url("../img/personal/password_icon.png") left center no-repeat;
+			}
+			label{
+				display: inline-block;
+				width: 220px;
+				font-weight: normal;
+				i{
+					display: inline-block;
+					width: 54px;
+					height: 54px;
+					vertical-align: middle;
+					margin-right: 30px;
+				}
+			}
+			.edit{
+				float: right;
+				margin: 10px 5px 0 0;
+				width: 88px;
+				height: 31px;
+				border: 2px @main-color1 solid;
+				text-align: center;
+				line-height: 28px;
+				border-radius: 4px;
+				color: @main-color1;
+				background-color: #fff;
+				.transition(all,0.2s,0s,ease-in);
+				&:hover{
+					color: #fff;
+					background-color: @main-color1;
+				}
+			}
+			button.edit{
+				width: 92px;
+				height: 35px;
+				&:disabled{
+					border: 2px solid lighten(@main-color1, 22%);
+					color: lighten(@main-color1, 22%);
+					background-color: #fff !important;
+				}
+			}
+			&.pic{
+				padding: 10px;
+				vertical-align: middle;
+				position: relative;
+				.img{
+					display: inline-block;
+					width: 94px;
+					height: 94px;
+					border-radius: 100%;
+					overflow: hidden;
+					vertical-align: middle;
+					margin-right: 15px;
+					img{
+						display: block;
+						width: 100%;
+						height: 100%;
+					}
+				}
+				a{
+					display: inline-block;
+					color: #fff;
+					width: 114px;
+					height: 36px;
+					text-align: center;
+					line-height: 36px;
+					background-color: @main-color2;
+					border-radius: 4px;
+					position: relative;
+					&:hover{
+						background-color: lighten(@main-color2, 5%)
+					}
+					form{
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						opacity: 0;
+						input{
+							display: block;
+							width: 100%;
+							height: 100%;
+						}
+					}
+				}
+			}
+		}
+	}
+}

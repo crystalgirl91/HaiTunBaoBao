@@ -1,0 +1,144 @@
+@import "include/variables";
+
+#coupon{
+	.nav-tabs{
+		a{
+			border: 0;
+			padding: 10px 14px;
+		}
+		li{
+			a:hover{
+				background-color: transparent;
+				border: 0;
+			}
+		}
+	}
+	background: #fff;
+	.data{
+		padding: 20px;
+		div{
+			&.unusewrapper{
+				background: #f7f7f7 url('../img/personal/unuse.png') top right no-repeat;
+				.left{
+					background: url('../img/personal/unuse_bg.png') no-repeat center center;
+					ul{
+						border: 2px solid #0688f8;
+						.date{
+							color: #135086;
+						}
+					}
+				}
+			}
+			&.usedwrapper{
+				background: #f7f7f7 url('../img/personal/use.png') top right no-repeat;
+				.left{
+					background: url('../img/personal/unuse_bg.png') no-repeat center center;
+					ul{
+						border: 2px solid #0688f8;
+						.date{
+							color: #135086;
+						}
+					}
+				}
+			}
+			&.expirewrapper{
+				background: #f7f7f7 url('../img/personal/expire.png') top right no-repeat;
+				.left{
+					background: url('../img/personal/expire_bg.png') no-repeat center center;
+					ul{
+						border: 2px solid #999;
+						.date{
+							color: #999;
+						}
+					}
+				}
+			}
+			margin-bottom: 20px;
+			height: 140px;
+			&>li{
+				display: inline-block;
+				vertical-align: middle;
+				&.left{
+					width: 223px;
+					height: 120px;
+					padding: 10px 12px 10px 10px;
+					color: #fff;
+					margin-right: 20px;
+					height: 140px;
+					ul{
+						border-radius: 8px;
+						padding: 5px 5px 10px;
+						.dw{
+							padding-left: 20px;
+							line-height: normal;
+							label{
+								font-size: 24px;
+							}
+							span{
+								font-size: 42px;
+							}
+						}
+						.date{
+							font-size: 13px;
+							padding-left: 20px;
+						}
+						.man{
+							padding-left: 20px;
+							line-height: 28px;
+						}
+					}
+				}
+				&.middle{
+					font-size: 14px;
+					color: #999;
+					li{
+						line-height: 30px;
+						label{
+							color: #666;
+							font-weight: normal;
+						}
+						&.nowrap{
+							white-space: nowrap;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							max-width: 450px;
+						}
+					}
+				}
+				&.unusecoupon{
+					float: right;
+					margin: 56px 50px 0 0;
+					a{
+						display: inline-block;
+						width: 108px;
+						height: 34px;
+						line-height: 34px;
+						border-radius: 4px;
+						color: @main-color1;
+						text-align: center;
+						border: 1px solid @main-color1;
+						.transition(background-color,0.2s,0s,ease-in);
+						&:hover{
+							color: #fff;
+							background-color: lighten(@main-color1, 5%);
+						}
+					}
+				}
+				&.usedcoupon{
+					float: right;
+					margin: 8px 50px 0 0;
+					width: 123px;
+					height: 124px;
+					background: url("../img/personal/use_img.png") center center no-repeat;
+				}
+				&.expirecoupon{
+					float: right;
+					margin: 8px 50px 0 0;
+					width: 123px;
+					height: 124px;
+					background: url("../img/personal/expire_img.png") center center no-repeat;
+				}
+			}
+		}
+	}
+}

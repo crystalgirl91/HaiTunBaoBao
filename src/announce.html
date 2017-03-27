@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app="announce">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>网站公告</title>
+<script>$PageName = "announce";</script>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/announce.css">
+</head>
+<body class="ng-cloak">
+<div class="page_wrapper">
+	<div id="page_header" ng-include="'include/header.html'"></div>
+	<div class="section_wrapper container-fluid">
+		<div class="row">
+			<div class="col-md-5 col-lg-5" ng-include="'include/static_aside.html'"></div>
+			<div class="col-md-19 col-lg-19" ng-controller="announceController">
+				<div class="panel panel-default">
+					<div class="panel-heading"><h3>{{ post.title }}</h3></div>
+					<div class="panel-body" ng-bind-html="post.content"></div>
+				</div>
+
+				<div id="comments" class="panel panel-default post-comments">
+					<div class="panel-heading">评论列表 <span ng-if="">({{ comment_count }})</spam></div>
+					<div class="panel-body">
+						<div class="media" ng-repeat="comment in comments">
+							<div class="media-left">
+								<a href="javascript:"><img class="media-object img-circle" ng-src="{{comment.img}}"></a>
+							</div>
+							<div class="media-body">
+								<div class="m-item m-name">{{comment.nick_name}}</div>
+								<div class="m-item m-cont">评论内容: {{ comment.content }}</div>
+								<div class="m-item m-time">
+									<span class="m-it">{{ comment.cmt_date | date:'MM-dd HH:mm' }}</span> <span class="m-diviser">|</span> <a class="m-it" href="javascript:" ng-click="comment._isopen=!comment._isopen;comment._response=''">回复</a>
+									<div class="m-tips my-form-group" ng-show="comment._isopen">
+										<input type="text" ng-model="comment._response" class="m-input" placeholder="回复{{comment.nick_name}}" required>
+										<button ng-disabled="!comment._response"  class="but but-blue m-tips-btn" ng-click="addCommentToUser(comment)">回复</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="more">
+							<a href="javascript:" ng-click="get_comments()" ng-show="page <= pages">更多评论 >></a>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel panel-default post-comments">
+					<div class="panel-heading">发表评论</div>
+					<div class="pabel-body">
+						<form id="commetForm" name="commentForm">
+							<div class="my-form-group">
+								<textarea class="m-textarea" name="commentTextarea" ng-model="newcomments" required></textarea>
+								<div class="btn-wrap"><button type="submit" ng-disabled="commentForm.$invalid" class="but but-blue but-extend" ng-click="addComment();newcomments=''">发表评论</button></div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div id="page_footer" ng-include="'include/footer.html'"></div>
+</div>
+<script src="js/common.js"></script>
+<script src="js/announce.js"></script>
+</body>
+</html>

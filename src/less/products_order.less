@@ -1,0 +1,389 @@
+@import "include/variables";
+
+// 微助产品订单页，保险产品订单页样式
+
+*{
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+}
+::-webkit-input-placeholder { color:@place-holder-color;font-size: 14px; }
+::-moz-placeholder { color:@place-holder-color;font-size: 14px; }
+:-ms-input-placeholder { color:@place-holder-color;font-size: 14px; }
+input:-moz-placeholder { color:@place-holder-color;font-size: 14px; }
+
+body{
+	font-size: 14px;
+	color:@fgcolor;
+}
+// .address-list{
+// 	.address-item{		
+// 		float: left;
+// 		margin-right: 20px;
+// 		margin-bottom: 20px;
+// 		cursor: pointer;
+// 		width: 316px;
+// 		height: 36px;
+// 		font-size: 14px;
+// 		input[type="radio"]:checked~.address-item-border{
+// 			border: 1px solid @border-color-orange;
+// 			position: relative;
+// 			color: @main-color2;
+
+// 			.checked-icon{
+// 				position: absolute;
+// 				background-color: @main-color2;
+// 				display: inline-block;
+// 				width: 20px;
+// 				text-align: center;
+// 				line-height: 20px;
+// 				height: 20px;
+// 				right: 0px;
+// 				bottom: 0px;
+// 				background: url(../img/credits/icon-active.jpg) no-repeat right bottom;
+// 			}
+// 		}
+// 		.address-input{
+// 			display: inline-block;
+// 			width: 100%;
+// 			height: 100%;
+// 			border:1px solid @border-color;
+// 			padding: 8px 14px;
+// 			color: @place-holder-color;
+// 			outline: none;
+// 			text-align: center;
+// 			color: @main-color1;
+// 		}
+// 		.address-item-border{
+// 			border:1px solid @border-color;
+// 			padding: 8px 14px;
+// 			width: 100%;
+// 			height: 100%;
+// 			display: block;
+// 			color: @place-holder-color;
+// 			&.address-btn{
+// 				width: 322px;
+// 				position: relative;
+// 				height: 102px;
+// 				cursor: pointer;
+// 				overflow: hidden;
+// 				.icon-big{
+// 					width: 100%;
+// 					height: 100%;
+// 					display: block;
+// 					background: url("../img/credits/add-btn.png") no-repeat center center; 
+					
+// 				}
+// 			}
+// 			.address-wrap{
+// 				display: block;
+// 				line-height: 18px;
+// 				&:extend(.ellipsis);
+// 			}
+// 		}
+// 	}
+// 	.address-a{
+// 			font-size: 14px;
+// 			float: left;
+// 			cursor: pointer;
+// 			color: @main-color1;
+// 			text-align: left;
+// 			height: 100%;
+// 			display: inline-block;
+// 			line-height: 32px;
+// 		}
+// }
+// 地址列表样式
+.addredd-list{
+	.adress-item{		
+		float: left;
+		margin-right: 20px;
+		margin-bottom: 20px;
+		cursor: pointer;
+		input[type="radio"]:checked~.address-item-border{
+			border: 1px solid @border-color-orange;
+			position: relative;
+			.checked-icon{
+				position: absolute;
+				background-color: @main-color2;
+				display: inline-block;
+				width: 20px;
+				text-align: center;
+				line-height: 20px;
+				height: 20px;
+				right: 0px;
+				bottom: 0px;
+				background: url(../img/credits/icon-active.jpg) no-repeat right bottom;
+			}
+		}
+		.address-item-border{
+			border:1px solid @border-color;
+			padding: 14px;
+			width: 100%;
+			height: 100%;
+			display: block;
+			&.address-btn{
+				width: 352px;
+				position: relative;
+				height: 102px;
+				cursor: pointer;
+				overflow: hidden;
+				.icon-big{
+					width: 100%;
+					height: 100%;
+					display: block;
+					background: url("../img/credits/add-btn.png") no-repeat center center; 
+					
+				}
+			}
+			.address-wrap{
+				border:1px solid @border-color;
+				width: 322px;
+				padding: 10px 14px;
+				display: block;
+				line-height: 18px;
+				&:extend(.ellipsis);
+			}
+			.a-btn{
+				color: @main-color2;
+				text-decoration: underline;
+				padding-left: 16px;
+				display: inline-block;
+				padding-top: 14px;
+				line-height: 14px;
+				font-size: 12px;
+			}
+		}
+		&:nth-child(3n){
+			margin-right: 0px;
+		}
+	}
+}
+#insuranceAddressList{
+	float: left;
+	width: 1012px;
+	.address-wrap{
+		width: 286px;
+	}
+	.address-item-border.address-btn{
+		width: 316px;
+	}
+}
+#moneyList{
+	.address-list{
+		.address-item{
+			width: 100px;
+			text-align: center;
+		}
+	}
+}
+//修改地址对话框
+.dialog-content{
+	padding: 20px 0px;
+	.address-label{
+		padding-top: 7px;
+		float: left;
+		width: 64px;
+	}
+	.tip{
+		text-align: left;
+		color: #999;
+		font-size: 15px;
+		padding-left: 20px;
+		margin-bottom: 20px;
+	}
+
+	.select-inline{
+		margin-right:20px;
+		float: left;
+		.select-menu{
+			max-height: 300px;
+			overflow-y: scroll;
+		}
+	}
+	.input-wrap{
+		margin-top: 30px;
+		.input{
+			display: block;
+			margin-left: 64px;
+			width: 428px;
+			height: 38px;
+			border: 1px solid #e1e1e1;
+			padding-left: 10px;
+			outline: none;
+			&:focus{
+				border: 1px solid @main-color1;
+			}
+		}
+	}
+	.footer-btn{
+		margin-top: 30px;
+		text-align: center;
+		width: 100%;
+		.but{
+			width: 254px;
+		}
+	}
+	
+}
+// form{
+// 	font-size: 0px;
+// }
+fieldset{
+	display: block;
+	padding: 0px;
+	border-top: 1px dashed @border-color;
+	border-right:0px;
+	border-bottom: 0px;
+	border-left: 0px;
+	legend{
+		color: @banner-color-gray2;
+		font-size: 18px;
+	    border-bottom: 0px;
+	    margin-bottom: 0px;
+	    width: auto;
+	}
+}
+.main-body{
+	.order-title{
+		font-size: 30px;
+		text-align: center;
+		color: @fbcolor;
+		padding: 16px 0px 33px 0px;
+		line-height: 46px;
+		font-weight: normal;
+		margin: 0px;
+
+		height: 194px;
+		background-image: url(../img/products/order-bg.jpg);
+		background-position: center;
+		background-size: auto 100%;
+		background-repeat: no-repeat;
+		background-color: @order-bg;
+	}
+	.main{
+		position: relative;
+		// height: 194px;
+		// background-image: url(../img/products/order-bg.jpg);
+		// background-position: center;
+		// background-size: auto 100%;
+		// background-repeat: no-repeat;
+		// background-color: @order-bg;
+		width: 100%;
+		.form{
+			background-color: #fff;
+			position: relative;
+			width: 1200px;
+			margin: 0 auto;
+			top: 0px;
+			padding: 49px 39px;
+			top: -99px;
+		}
+	}
+	min-height: 1134px;
+}
+.block {
+    padding: 38px 0px;
+}
+.pay-mess{
+	padding-left: 110px;
+}
+.text{
+	>strong{
+		font-size: 36px;
+		color: @main-color2;
+	}
+}
+.btn-wrap{
+	width: 256px;
+}
+.float-block{
+	.form-label{
+		float: left;
+		padding-top: 8px;
+	}
+	#addressList{
+		float: left;
+		width: 1008px;
+	}
+}
+input[type="text"],input[type="email"],input[type="password"]{
+	width: 316px;
+	display: inline-block;
+}
+.text{
+	padding-top: 8px;
+    display: inline-block;
+}
+.checkbox-inline{
+	padding-left: 0px;
+}
+.form-label{
+	&.form-label-padding{
+		padding-top: 26px;
+	}
+}
+
+//日期选择控件样式
+*{
+	&:focus{
+		outline: none;
+	}
+	
+}
+.datePicker{
+	position: relative;
+	.date-btn{
+		position: absolute;
+		right: 1px;
+		top: 1px;
+		border:0px;
+		height: 36px;
+		&:hover{
+			background-color: #fff;
+		}
+		&:focus{
+			outline: none;
+			background-color: #fff;
+			box-shadow: none;
+		}
+	}
+}
+
+.modal-content{
+	box-shadow: 1px 0 8px #666;
+	border:0px;
+	border-radius: 0px;
+}
+
+.uid-content{
+	.uid-title{
+	    background: #f3f3f3;
+	    border-bottom: 1px solid #f1f1f1;
+	    height: 36px;
+	    margin: 0px;
+	    line-height: 36px;
+	   	padding-left: 16px;
+    	font-size: 15px;
+	    .uid-close-btn{
+    	    position: absolute;
+		    top: 0;
+		    right: 0;
+		    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjM0MkJGNkY5MDE2NTExRTY5MUU5RUU1MzlBQkJEQTFBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjM0MkJGNkZBMDE2NTExRTY5MUU5RUU1MzlBQkJEQTFBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MzQyQkY2RjcwMTY1MTFFNjkxRTlFRTUzOUFCQkRBMUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MzQyQkY2RjgwMTY1MTFFNjkxRTlFRTUzOUFCQkRBMUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6D1VLpAAAAyklEQVR42qSTzwrCMAzGq42PpycPCp0y36q3iYIevIiPp0MTSUeI6R8w8LFuze9bkm6zGKP7J+Z8XaOOKN/AUM7AzGSwQu1Qp4qJ55w9akkPgDd61AK15fsONWZgyrmgDtKAkgOvLRMNT3sg3pAzcQK+6upAlWmZOAEH3RoYg7JMTFieghXvzNrVKvCqZ1c6HajAQc3BlYZI8Bm1MXoO3MaPCTTAabCdVUkyGApwzuRJn3QyuHOJfQbWJi/UQ7ZwY7XEyD/eNz4CDABRxUGINMtgHwAAAABJRU5ErkJggg==) no-repeat center center;
+		    width: 36px;
+		    height: 36px;
+		    cursor: pointer;
+	    }
+	}
+	.uid-body{
+		padding: 10px;
+	}
+}
+.checkbox-a{
+	color: @fgcolor;
+	outline: none;
+	vertical-align: middle;
+	&:focus{
+		outline: none;
+	}
+}

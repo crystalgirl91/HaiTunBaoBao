@@ -1,0 +1,75 @@
+@import "include/variables";
+
+* {
+  font-size: 14px;
+}
+.section_wrapper > .content .pagination{
+	margin: 0 30px 0 0;
+}
+#userStore{
+	background: #fff;
+	.content{
+		ul.items{
+			width: 950px;
+			padding: 30px 15px 17px;
+			margin-top: -1px;
+			border-top: 1px solid #e1e1e1;
+			li{
+				display: inline-block;
+				width: 33.33%;
+				padding: 0 15px;
+				box-sizing: border-box;
+				vertical-align: top;
+				margin-bottom: 20px;
+				.img{
+					display: block;
+					width: 100%;
+					height: 182px;
+					img{
+						display: block;
+						width: 100%;
+						height: 100%;
+					}
+				}
+			}
+		}
+
+		.info{
+			background-color: #f7f7f7;
+			padding: 10px;
+			h4{
+				margin: 0;
+				font-size: 14px;
+				font-weight: normal;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				width: 72%;
+				vertical-align: middle;
+				display: inline-block;
+			}
+			.money{
+				font-size: 16px;
+				color: @main-color2;
+				float: right;
+			}
+			.footer{
+				font-size: 14px;
+				margin-top: 5px;
+				.time{
+					display: inline-block;
+					color: #999;
+					font-size: 13px;
+				}
+				a{
+					float: right;
+					color: @main-color1;
+					font-size: 12px;
+					&:hover{
+						color: lighten(@main-color1, 5%)
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="personal_message_detail">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>消息详情</title>
+<script>$PageName = "personal_message_detail";</script>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/personal_message_detail.css">
+</head>
+<body class="ng-cloak">
+<div class="page_wrapper">
+    <div id="page_header" ng-include="'include/header.html'"></div>
+    <div class="section_wrapper">
+        <div id="personal_aside" personal-aside="personal_account.html" class="pull_left"></div>
+        <div class="content pull_right" data-ng-controller="messageDetailController">
+            <h4>{{ typeName }}<a data-ng-href="personal_message.html#/{{ type }}/{{ pageIndex }}">返回列表</a></h4>
+            <section>
+                <h2>{{ data.title?data.title:data.nick_name }}<span class="time">{{ data.createdate | date:"yyyy-MM-dd HH:mm:ss" }}</span></h2>
+                <div>{{ data.content }}</div>
+            </section>
+        </div>
+    </div>
+    <div id="page_footer" ng-include="'include/footer.html'"></div>
+</div>
+<script src="js/common.js"></script>
+<script src="js/personal_message_detail.js"></script>
+</body>
+</html>

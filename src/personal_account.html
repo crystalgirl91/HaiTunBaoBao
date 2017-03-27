@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html ng-app="personal_account">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>账户总览</title>
+<script>$PageName = "personal_account";</script>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/personal_account.css">
+</head>
+<body class="ng-cloak">
+<div class="page_wrapper">
+	<div id="page_header" ng-include="'include/header.html'"></div>
+	<div class="section_wrapper">
+		<div id="personal_aside" personal-aside="personal_account.html" class="pull_left"></div>
+		<div class="content pull_right" data-ng-controller="inforController">
+			<div id="userInfo">
+				<div class="pic"><img data-ng-src="{{infor.img || '../img/personal/user_default.jpg'}}"/></div>
+				<ul>
+					<li>下午好，<span class="name">{{infor.nick_name}}</span><span class="level_img level  {{infor.cust_level}}"></span>V<span>{{infor.cust_level}}</span>会员
+					<a href="personal_message.html#/mess/1" class="message_link">
+						<span class="message"></span>
+						<span class="unred">{{infor.msg_unread_count}}</span>
+					</a>
+					<span class="line">|</span><a href="javascript:void(0)" data-ng-click="signout()" class="logout">【退出】</a><!--span class="last_login pull_right">上次登录时间：<span>{{infor.registerDate}}</span></span--></li>
+					<li>
+						<label><span class="label">优惠券：</span>
+							<a data-ng-if="infor.available_coupon_count!=0" href="personal_coupon.html#/unuse" class="quan">{{infor.available_coupon_count}}<span class="dw"> 张</span></a>
+							<a data-ng-if="infor.available_coupon_count==0" href="javascript:void(0)" class="quan">{{infor.available_coupon_count}}<span class="dw"> 张</span></a>
+						</label>
+						<label><span class="label">可用积分：</span><a href="personal_jf.html" class="jf">{{infor.avalicredit}}</a></label>
+					</li>
+					<li>
+						<label data-ng-if="infor.risktip">
+							<span class="label">风险得分：</span>
+							<span class="risk_num">{{infor.cust_risklevel}}</span>
+							<span class="risk_level">{{infor.cust_risk}}</span>
+							<a href="risk_result.html" class="risk_eval">风险评估</a>
+						</label>
+						<label data-ng-if="!infor.risktip">
+							<span class="label">风险得分：</span>
+							<span class="risk_num">无</span>
+							<span class="risk_level"></span>
+							<a href="risk_evaluate.html#/risk_evaluate1" class="risk_eval">开始评估</a>
+						</label>
+						<span class="pull_right btns">
+							<a href="javascript:void(0)" class="sign" data-ng-click="sigin()">签到</a>
+							<a href="http://bbs.htbaobao.com" target="_blank" class="bbs">论坛</a>
+						</span>
+					</li>
+				</ul>
+			</div>
+			<div id="userProduct">
+				<ul class="type">
+				    <li ng-class="{active: type === 'comm'}" class="nav-item">
+				    	<input type="radio" name="product" data-ng-model="type" value="comm" data-ng-click="changeType(type)"><a href="javascript:void(0)">进行中的保单</a>
+				    </li>
+				    <li ng-class="{active: type === 'mutual'}" class="nav-item">
+				    	<input type="radio" name="product" data-ng-model="type" value="mutual" data-ng-click="changeType(type)"><a href="javascript:void(0)"> 进行中的订单</a>
+				    </li>
+				</ul>
+				<div>
+					<div id="comm" class="content" data-ng-show="type === 'comm'">
+						<div class="table-responsive">
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<td>保单名称</td>
+										<td>被保人</td>
+										<td>当前余额(元)</td>
+										<td>单号</td>
+										<td>保障期限</td>
+										<td>操作</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr data-ng-repeat="item in comm">
+										<td><a data-ng-href="products_insurance.html?prodAid={{ item.prodAid }}">{{ item.prodName }}</a></td>
+										<td>{{ item.isuName }}</td>
+										<td>{{ ((item.isuAmt) / 100).toFixed(2) }}</td>
+										<td>{{ item.isuNum!==""?item.isuNum:item.ordAid }}</td>
+										<td>{{ item.isuDtStart | date:"yyyy-MM-dd" }}~{{ item.isuDtEnd | date:"yyyy-MM-dd" }}</td>
+										<td>
+											<span data-ng-hide="item.policyStatus=='8'||item.policyStatus=='9'||item.policyStatus=='10'">
+												<a data-ng-href="products_insurance_order.html?prodAid={{ item.prodAid }}&skuAid={{ item.skuAid }}&prodName={{ item.prodName }}&price={{ item.isuAmt }}&buyLabel={{ item.policyStatus==='0'?'支付':'续保' }}&ordaid={{ item.ordAid }}&isunum={{ item.isuNum }}"
+													data-ng-show="item.policyStatus==='0' || date <= item.isuDtEnd">{{ item.policyStatus==='0'?'支付':'续保' }}</a>
+
+												<a class="evaluate" data-ng-if="item.cmtYn!=='1' && item.policyStatus!=='0' && item.policyStatus!=='1'" href='javascript:void(0)' data-ng-click="evaluateBaobao(item)">评价</a>
+												<span class="evaluate_gray" data-ng-if="item.cmtYn==='1' && item.policyStatus!=='0' && item.policyStatus!=='1'">已评价</span>
+											</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="noData_Tip" data-ng-if="!comm.length">没有匹配数据</div>
+						<uib-pagination data-ng-show="comm.length"
+							total-items="total"
+							ng-model="pageIndex"
+							items-per-page="pageSize"
+							previous-text="<"
+							next-text=">"
+							max-size="10"
+							ng-change="selectPage(pageIndex)"></uib-pagination>
+					</div>
+					<div id="mutual" class="content"  data-ng-show="type === 'mutual'">
+						<div class="table-responsive">
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<td>订单名称</td>
+										<td>订单号</td>
+										<td>实付款(元)</td>
+										<td>商品信息</td>
+										<td>购买时间</td>
+										<td>操作</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr data-ng-repeat="item in mutual">
+										<td><a data-ng-href="products_control.html?prodAid={{ item.prodAid }}">{{ item.prodName }}</a></td>
+										<td>{{ item.ordAid }}</td>
+										<td>{{ ((item.prodPriceAmt+item.shipFee) / 100).toFixed(2) }}</td>
+										<td>
+											<span data-ng-if="item.color">{{ item.color+'/' }}</span>
+											<span data-ng-if="item.color">{{ item.size+'/' }}</span>
+											{{ item.itemCount }}
+										</td>
+										<td>{{ item.ordDate | date:"yyyy-MM-dd HH:mm:ss" }}</td>
+										<td>
+											<span data-ng-hide="item.status=='8'">
+												<a data-ng-show="item.status==='2'" data-ng-href="buy-mutual.html?skuaid={skuAid}&size={size}&color={color}&num={itemCount}&prodaid={prodAid}&prodname={prodName}&prodprice={money}&ordaid={ordAid}">支付</a>
+												<a class="evaluate" data-ng-if="item.cmtYn!=='1' && (item.status=='6' || item.status=='7')" href='javascript:void(0)' data-ng-click="evaluateBaobao(item)">评价</a>
+												<span class="evaluate_gray" data-ng-if="item.cmtYn==='1' && (item.status=='6' || item.status=='7')">已评价</span>
+												<a data-ng-if="item.status=='6' || item.status=='7'" href='personal_distribution.html?ordaid={{ item.ordAid }}'>查看物流</a>
+											</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="noData_Tip" data-ng-if="!mutual.length">没有匹配数据</div>
+						<uib-pagination data-ng-show="mutual.length"
+							total-items="total"
+							ng-model="pageIndex"
+							items-per-page="pageSize"
+							previous-text="<"
+							next-text=">"
+							max-size="10"
+							ng-change="selectPage(pageIndex)"></uib-pagination>
+					</div>
+				</div>
+			</div>
+			<div id="sign_success" data-ng-show="is_sigin">
+				<div class="content">
+					<a class="lottery" href="lottery.html">立即抽奖</a>
+					<a class="close" href='javascript:void(0)' data-ng-click="is_sigin = !is_sigin">×</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div id="page_footer" ng-include="'include/footer.html'"></div>
+
+</div>
+<script src="js/common.js"></script>
+<script src="js/personal_account.js"></script>
+</body>
+</html>

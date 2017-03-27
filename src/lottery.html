@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="lottery">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>抽奖</title>
+<script>$PageName = "lottery";</script>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/lottery.css">
+</head>
+<body class="ng-cloak">
+<div class="page_wrapper">
+	<div id="page_header" ng-include="'include/header.html'"></div>
+	<div class="lottery-body">
+		<ul>
+			<li class="item-1">5积分</li>
+			<li class="item-2">10积分</li>
+			<li class="item-3">20积分</li>
+			<li class="item-4">50积分</li>
+			<li class="item-5">100积分</li>
+		</ul>
+		<div class="my_credits">{{my_credits}}</div>
+		<div class="arrow" style="{{styleObj.transform}}"></div>
+		<div class="go_button" ng-click="go()"></div>
+		<img class="qrcode" ng-src="http://m.htbaobao.com/images/qrcode1.png">
+		<a href="personal_jf.html" class="my_list"></a>
+		<div class="lottery-list">
+			<div class="lottery-list-wrapper">
+				<ul>
+					<li ng-repeat="(key, item) in list">恭喜 {{ item.nick_name }} 抽中 {{ item.point_amt }}积分</li>
+				</ul>
+			</div>
+			<div class="lottery-total">已有 {{ total }} 人中奖</div>
+		</div>
+	</div>
+	<div id="page_footer" ng-include="'include/footer.html'"></div>
+</div>
+<div id="global_masker" ng-show="showDialog">
+	<div ng-show="showMessageDialog" class="dialog dialog_success"><a class="close_button" ng-click="showDialog = false" href="javascript:"><i class="glyphicon glyphicon-remove"></i></a>
+		<div class="dialog_message">{{messageDialogContent}}</div>
+		<a class="dialog_button" href="personal_jf.html">查看积分</a>
+	</div>
+	<div ng-show="showErrorDialog" class="dialog dialog_error"><a class="close_button" ng-click="showDialog = false" href="javascript:"><i class="glyphicon glyphicon-remove"></i></a>
+		<div class="dialog_message">{{errorDialogContent}}</div>
+		<a class="dialog_button" ng-click="showDialog = false" href="javascript:">关闭</a>
+	</div>
+</div>
+<script src="js/common.js"></script>
+<script src="js/lottery.js"></script>
+</body>
+</html>

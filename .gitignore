@@ -1,0 +1,7 @@
+node_modules
+built
+npm-debug.log
+.idea
+.idea/*
+tmp
+*.bak

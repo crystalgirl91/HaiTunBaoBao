@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="personal_address">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>地址管理</title>
+<script>$PageName = "personal_address";</script>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/personal_address.css">
+</head>
+<body class="ng-cloak">
+<div class="page_wrapper">
+	<div id="page_header" ng-include="'include/header.html'"></div>
+	<div class="section_wrapper">
+		<div id="personal_aside" personal-aside="personal_address.html" class="pull_left"></div>
+		<div class="content pull_right" data-ng-controller="addressController">
+			<div id="address">
+				<ul class="nav">
+					<li>我的理赔</li>
+					<li><a href="javascript:void(0)" class="add" data-ng-click="addAddress()">新增收货地址</a></li>
+				</ul>
+				<div id="addresses">
+					<div class="table-responsive">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<td>所在地址</td>
+									<td>详细地址</td>
+									<td>操作</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-ng-repeat="item in addresses">
+									<td>{{ item.region }}</td>
+									<td>{{ item.address }}</td>
+									<td>
+										<a href="javascript:void(0)" data-ng-click="editAddress(item)">修改 </a><span class="line">|</span>
+										<a class="evaluate" href='javascript:void(0)' data-ng-click="deleteAddress(item)">删除 </a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>				
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="page_footer" ng-include="'include/footer.html'"></div>
+</div>
+<script src="js/common.js"></script>
+<script src="js/personal_address.js"></script>
+</body>
+</html>

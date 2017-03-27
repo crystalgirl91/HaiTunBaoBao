@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="claim_step">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>申请理赔流程</title>
+<script>$PageName = "claim_step";</script>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/claim_step.css">
+</head>
+<body class="ng-cloak">
+<div class="page_wrapper">
+	<div id="page_header" ng-include="'include/header.html'"></div>
+	<div class="section_wrapper" data-ng-controller='claimforController'>
+		<div id="personal_aside" personal-aside="claim_step.html" class="pull_left"></div>
+		<div class="content pull_right">
+			<div id="claimfor">
+				<ul class="nav">
+					<li>申请理赔流程</li>
+				</ul>
+				<div class="total-main">
+					<p class="normal-p">发生保险事故后，海豚保宝将为您提供7×24小时线上自助理赔申请服务。请参照以下流程申请理赔：</p>
+					<ul class="list-step">
+						<li class="step">
+							<div class="step-circle">报案申请</div>
+							<p class="step-artical">
+								点击页面菜单“我的”，在“立即登录”中登录“海豚保宝”微信公众号平台或微博公众号客服平台输入用户名及密码登录，进入“我的保宝”，点击下方“我要申请理赔”，完整填写信息后，点击“提交”按钮，即完成申请。
+							</p>
+						</li>
+						<li class="step">
+							<div class="step-circle">协助理赔</div>
+							<p class="step-artical">
+								“海豚保宝”将在收到理赔申请24小时内与您联系,全程为您提供协助理赔服务：向承保公司报案、准备理赔材料、递交理赔材料等，免去您的反复奔波。
+							</p>
+						</li>
+						<li class="step">
+							<div class="step-circle">等待审核</div>
+							<p class="step-artical">
+								“海豚保宝”协助您跟进理赔审核进度，必要时提供法律援助。对确属保险责任的案件，帮您督促承保公司在赔付协议达成10日内完成理赔审核、结案。
+							</p>
+						</li>
+						<li class="step">
+							<div class="step-circle">领取赔偿</div>
+							<p class="step-artical">
+								“海豚保宝”帮您督促承保公司尽早将赔偿资金支付至被保险人或受益人账户，解决您的燃眉之急。
+							</p>
+						</li>
+						<li class="step">
+							<div class="step-circle">服务回访</div>
+							<p class="step-artical">
+								“海豚保宝”将在支付赔偿金后，对您进行电话回访，内容包括：对理赔服务体验的满意度、对“海豚保宝”平台产品及运作的意见和建议、对您风险管理能力的评测及建议等。
+							</p>
+						</li>
+					</ul>
+					<p class="normal-bottom">
+						您有任何疑问可在周一至周五（9:00-18:00）拨打客服热线<telephone class="blue"> 0755-82181008 </telephone>或向线上客服进行咨询。
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="page_footer" ng-include="'include/footer.html'"></div>
+</div>
+<script src="js/common.js"></script>
+<script src="js/claim_step.js"></script>
+</body>
+</html>

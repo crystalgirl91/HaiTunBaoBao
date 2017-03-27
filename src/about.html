@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="about">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>关于我们</title>
+<script>$PageName = "about";</script>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/about.css">
+</head>
+<body class="ng-cloak">
+<div class="page_wrapper">
+	<div id="page_header" ng-include="'include/header.html'"></div>
+	<div class="section_wrapper container-fluid">
+		<div class="row">
+			<div class="col-md-5 col-lg-5" ng-include="'include/static_aside.html'"></div>
+			<div class="col-md-19 col-lg-19">
+				<div class="panel panel-default">
+					<div class="panel-heading"><h3>公司介绍</h3></div>
+					<div class="panel-body">
+						<p>“海豚保宝”是由海豚大数据网络科技（深圳）有限公司开发所有的移动互联网平台，通过运用各类网络和大数据智能技术，提供即时风险资讯，各类风险管理产品和用户风险账户管理服务。其中产品中心的保险产品由持有全国性保险经纪经营牌照的海豚保险经纪有限公司提供和经营。</p>
+            			<p>海豚大数据网络科技公司是海豚保险经纪的母公司，主要股东均是百亿市值大型上市公司；核心经营团队由具有丰富经验的互联网行业、保险领域及其他领域人才共同组成的。团队以提高用户体验为己任，专注、勤勉，朝气蓬勃，对运用科技力量进行精准风险管理，提供创新保险服务抱有极高热情和坚持精神！</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="page_footer" ng-include="'include/footer.html'"></div>
+</div>
+<script src="js/common.js"></script>
+<script src="js/about.js"></script>
+</body>
+</html>

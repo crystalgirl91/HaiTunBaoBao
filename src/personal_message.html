@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="personal_message">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>消息中心</title>
+<script>$PageName = "personal_message";</script>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/personal_message.css">
+</head>
+<body class="ng-cloak">
+<div class="page_wrapper">
+	<div id="page_header" ng-include="'include/header.html'"></div>
+	<div class="section_wrapper">
+		<div id="personal_aside" personal-aside="personal_account.html" class="pull_left"></div>
+		<div class="content pull_right">
+			<ul class="nav nav-tabs">
+			    <li ng-class="{active: pageCategory === 'mess'}" class="nav-item">
+			        <a href="javascript:" ng-click="jumpPage('mess', messIndex)" class="nav-link">通知<span class="unreadcount" data-ng-if="unreadMess.length">{{ unreadMess.length }}</span></a>
+			    </li>
+			    <li ng-class="{active: pageCategory === 'aboutme'}" class="nav-item">
+			        <a href="javascript:" ng-click="jumpPage('aboutme', aboutIndex)" class="nav-link">评论我的<span class="unreadcount type2" data-ng-if="unreadAbout.length">{{ unreadAbout.length }}</span></a>
+			    </li>
+			</ul>
+			<div class="data">
+				<div id="mess">
+					<div class="table-responsive">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<td>
+										<span>{{ pageCategory === 'mess'?'标题':'评论人' }}</span>
+									</td>
+									<td>内容</td>
+									<td>时间</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-ng-repeat="item in messages" data-ng-class="{'read': item.read_tf==1}">
+									<td>
+										<span class="title"><a href="personal_message_detail.html#?id={{ item.msg_aid }}&type={{ pageCategory }}&page={{ pageIndex }}">{{ item.title?item.title:item.nick_name }}</a></span>
+									</td>
+									<td width="50%" class="content">{{ item.content }}</td>
+									<td>{{ item.createdate | date:"yyyy-MM-dd HH:mm:ss" }}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="noData_Tip" data-ng-if="!messages.length">没有匹配数据</div>
+					<uib-pagination data-ng-show="messages.length"
+						total-items="total"
+						ng-model="pageIndex"
+						items-per-page="pageSize"
+						previous-text="<"
+						next-text=">"
+						max-size="10"
+						ng-change="selectPage(pageIndex)"></uib-pagination>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="page_footer" ng-include="'include/footer.html'"></div>
+</div>
+<script src="js/common.js"></script>
+<script src="js/personal_message.js"></script>
+</body>
+</html>
